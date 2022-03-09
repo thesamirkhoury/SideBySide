@@ -10,6 +10,6 @@
 ## Non Functional Requirements
 - The website must use the Brand Colors.
 - The website must use the Brand Specific font.
-- 
+- The website must
 
 # UML Diagram
