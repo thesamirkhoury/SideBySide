@@ -1,0 +1,36 @@
+.div-parent{
+    display: flex;
+    background-color:#ffff;
+    justify-content: space-between;
+    align-items: center;
+    padding:0px 30px;
+    margin:0px 40px;
+}
+.div-child{
+    display: flex;
+    align-items: center;
+    
+    justify-content: space-between;
+    width: 40%;
+   
+    
+}
+
+.div-child:first-child{
+    margin-right: 20px;
+}
+ul{
+    list-style-type:none;
+    display: flex;
+    
+}
+
+ul li{
+    margin:0px 20px;
+    
+
+}
+a{
+    text-decoration: none;
+    color:black;
+}
