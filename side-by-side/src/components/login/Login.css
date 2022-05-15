@@ -1,0 +1,64 @@
+.about-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(203, 232, 233, 0.897);
+
+}
+.title-txt{
+    font-size: 60px;
+}
+.input-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36vw;
+    margin: 30px 10px;
+     
+
+    
+     
+}
+
+label {
+    font-weight: 400;
+}
+input{
+    width: 100%;
+    padding: 4px;
+    border: none;
+    border-radius: 7px;
+    margin: 0 14px;
+}
+
+.btns{
+    display: flex;
+    align-items: center;
+    width: 16vw;
+    flex-direction: column;
+    
+    
+}
+
+.btns > button {
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px 10px;
+    
+   
+}
+
+.btn-1{
+    background: #08ABB6;
+    border: solid #08ABB6;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.btn-2{
+    border: solid #08ABB6;
+    border-width: 1px;
+}
