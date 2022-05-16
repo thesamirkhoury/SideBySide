@@ -1,5 +1,5 @@
 import React from 'react'
-import UpdateCard from './UpdateCard'
+// import UpdateCard from './UpdateCard'
 import {BsSearch} from 'react-icons/bs'
 import './updates.css'
 function Updates() {
@@ -17,9 +17,9 @@ function Updates() {
         </div>
 
         <div className='grid-container'>
+        {/* <UpdateCard/>
         <UpdateCard/>
-        <UpdateCard/>
-        <UpdateCard/>
+        <UpdateCard/> */}
 
         </div>
     </div>
