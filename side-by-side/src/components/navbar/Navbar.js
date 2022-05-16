@@ -18,7 +18,7 @@ function Navbar() {
             <span>
           
           <ul>
-            <a href="http://katef.org.il" _target="_blank">כתף לכתף</a>
+            <a href="http://katef.org.il" target="_blank" >כתף לכתף</a>
             <li><Link to="/about">אודותינו</Link></li>
             <li><Link to="/blog">בלוג</Link></li>
             <li><Link to="/update">עדכונים</Link></li>
