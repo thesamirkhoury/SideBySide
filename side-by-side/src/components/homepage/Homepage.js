@@ -12,7 +12,7 @@ function Homepage() {
                 <h1>  החממה  </h1>    
                 <p>קהילה תומכת דיגיטלית. </p>   
                 <button className='home-login' > התחבר לאזור האישי</button>       
-                <button className='home-waitinglist' > הכנס לרשימת ההמתנה </button>
+                <button className='home-waitinglist' > להצטרף לקהילה </button>
                 </div>
     </div>
   )
