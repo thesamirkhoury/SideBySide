@@ -1,0 +1,50 @@
+.Coupons-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  background-color:#F7F7FC;
+}
+.coupon-heading {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 78px;
+  text-align: right;
+  color: #000000;
+}
+.coupon-sectin {
+  display: flex;
+  padding: 30px;
+  background-color: #f7f7fc;
+  flex-direction: column;
+  height: 100%;
+}
+.couponSection-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.couponSection-header>button{
+  margin-left: 50px;
+}
+.couponSection-header>h1{
+  margin-right: 20px;
+}
+.couponSection-header > button {
+  width: 100px;
+  height: 29px;
+  background: #0aabb8;
+  border-radius: 5px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
