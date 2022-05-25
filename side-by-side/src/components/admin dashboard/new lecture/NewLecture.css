@@ -1,0 +1,75 @@
+.newLectur-component {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 100px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background-color: #fff;
+  padding-bottom: 150px !important;
+  
+}
+.content-newLect{
+  padding: 20px 60px;
+  width: 40%;
+}
+.content-newLect > input {
+  box-sizing: border-box;
+  width: 250px;
+  height: 25px;
+  background: #ffffff;
+  border: 1px solid #5e5e5f;
+  border-radius: 5px;
+}
+.content-newLect > p {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  text-align: right;
+  margin-bottom: 2px;
+  margin-right: 13px;
+}
+.input-newLecture {
+  border: 1px solid rgba(208, 212, 217, 1);
+  width: 350px;
+  margin-top: 5px;
+}
+
+.newLec-btn {
+  width: 330px;
+  height: 51px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #0aabb8;
+  border-radius: 10px;
+  margin: 30px;
+  color: white;
+  height: 29px;
+  width: 100px;
+}
+.newLec-btn-cancel {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.005em;
+  color: #000000;
+  border: 1px solid rgba(182, 8, 8, 1);
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 29px;
+  width: 100px;
+  margin-right: 70px;
+}
+.btns-newLec {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 60px;
+  justify-content: center;
+  align-items: center;
+}
