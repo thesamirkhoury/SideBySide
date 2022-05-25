@@ -1,0 +1,41 @@
+.blog-section {
+  display: flex;
+  padding: 30px;
+  background-color: #f7f7fc;
+  flex-direction: column;
+  height: 100%;
+}
+.blogSection-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.blogSection-header>button{
+  margin-left: 50px;
+}
+.blogSection-header>h1{
+  margin-right: 20px;
+}
+.newPost-button {
+  width: 100px;
+  height: 29px;
+  background: #0aabb8;
+  border-radius: 5px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.blogs-section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end ;
+}
