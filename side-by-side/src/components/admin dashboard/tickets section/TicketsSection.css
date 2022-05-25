@@ -1,0 +1,53 @@
+.ticket-sectin {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 20px 20px;
+  background-color: #f7f7fc;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 70%;
+}
+.ticket-table {
+  width: 100%;
+  padding: 5px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ffffff;
+  border: none;
+}
+
+td,
+th {
+  padding: 15px;
+  border-color: #ecedee;
+}
+
+table tr td td {
+  border-color: #ecedee;
+  border-collapse: "collapse";
+}
+
+.replyButton {
+  background: #0aabb8;
+  border-radius: 5px;
+  width: 100px;
+  height: 29px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+.repBtn {
+  /* background-color: #f7f7fc; */
+  /* border: none !important; */
+}
