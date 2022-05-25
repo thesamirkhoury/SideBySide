@@ -1,0 +1,88 @@
+.tickets-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.searchBox {
+  margin: 20px;
+  margin-top: 50px;
+  width: 70%;
+  position: relative;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchBox > input {
+  width: 98%;
+  height: 40px;
+  padding-right: 55px;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+}
+.searchBox > input::placeholder {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 37px;
+  color: #595a5b;
+}
+.searchBox > img {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  font-family: "SF Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 33px;
+
+  /* Tertiary - Grey */
+
+  color: #595a5b;
+}
+
+.title-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 85%;
+}
+.title-button > h1 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 78px;
+  text-align: right;
+  color: #000000;
+}
+.new-ticket-btn {
+  width: 110px;
+  height: 48px;
+  background: #0aabb8;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.new-ticket-btn > button {
+  background-color: #0aabb8;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+}
+
+.singletickets-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    
+}

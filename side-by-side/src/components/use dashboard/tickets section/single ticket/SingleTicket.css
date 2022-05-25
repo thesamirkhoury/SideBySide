@@ -1,0 +1,61 @@
+.newticket-card {
+  width: 300px;
+  height: 250px;
+  background-color: white !important;
+  padding: 20px;
+  position: relative;
+  border-radius: 10px;
+  margin: 15px 20px;
+}
+
+.singleticket-detail {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-left: 60px;
+  text-align: right;
+  padding-right: 24px;
+  margin-bottom: -30px;
+  margin-top: -20px;
+}
+.status {
+}
+/* background: #F2DADA;
+border-radius: 4px; */
+.status > span {
+  background: #daf2ec;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.singleticket-detail > h2 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
+  color: #000000;
+  margin-bottom: -20px;
+}
+
+.expand-ticket {
+  width: 150px;
+  height: 50px;
+  background: #f1f5fe;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 70px;
+  cursor: pointer;
+}
+.expand-ticket > img {
+  margin: 12px;
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 50px;
+}
