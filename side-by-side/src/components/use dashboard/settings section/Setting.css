@@ -1,0 +1,135 @@
+.user-settings {
+  display: flex;
+  justify-content: flex-end;
+  background: #e5e5e5;
+  flex-direction: column;
+}
+.user-settings > h1 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 78px;
+  text-align: right;
+  color: #000000;
+}
+
+.update-information {
+  width: 98%;
+  display: flex;
+  justify-content: flex-end;
+}
+.update-password {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+.password-container {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.password-container > h1 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 78px;
+  text-align: right;
+  color: #000000;
+}
+.input-boxPassword {
+  width: 100%;
+}
+.input-boxPassword > input {
+  box-sizing: border-box;
+  width: 70%;
+  margin: 8px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  height: 35px;
+  padding: 2px 10px;
+}
+.input-boxPassword > label {
+  width: 30%;
+}
+
+.updateInfo-container {
+  width: 100%;
+  padding: 10px;
+}
+.singleLine-input {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+}
+.singleLine-inputPassword {
+  display: flex;
+  flex-direction: row;
+  justify-content: center !important;
+  align-items: center;
+  width: 80%;
+}
+
+.input-box {
+  width: 100%;
+  height: 29px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.input-box > input {
+  box-sizing: border-box;
+  margin: 10px;
+  width: 65%;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  height: 35px;
+  padding: 2px 10px;
+}
+
+.saveInfoBtn {
+  margin-top: 30px;
+}
+.passSave {
+  margin-top: 30px;
+}
+.passSaveBtn {
+  outline: none;
+  border: none;
+  background: #0aabb8;
+  border-radius: 5px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  padding: 5px;
+  cursor: pointer;
+  width: 100px;
+  margin-right: 450px;
+}
+.saveInfoBtn-1R {
+  outline: none;
+  border: none;
+  background: #0aabb8;
+  border-radius: 5px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  padding: 5px;
+  cursor: pointer;
+  width: 100px;
+}
