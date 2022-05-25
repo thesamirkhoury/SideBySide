@@ -1,0 +1,85 @@
+.updateEx-component {
+  background-color: white;
+  margin: 0;
+  padding: 50px;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.page-title {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
+  /* or 250% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+.top {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 20px;
+  line-height: 20px;
+
+}
+.time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -50px;
+
+}
+.time > p {
+  margin-right: 7px;
+  margin-bottom: 15px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+
+.content-Expand{
+    width: 1000px;
+    height: 272px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align:right;
+
+}
+
+.expand-btn{
+    width: 1008px;
+    height: 87px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F5FE;
+    border-radius: 12px;   
+    cursor: pointer;
+    flex-direction: row;
+    margin-right: 150px;
+
+
+}
+.expand-btn>button{
+    border: none;
+    background-color: #F1F5FE;  
+    outline: none;
+    color:rgba(10, 171, 184, 1);;
+   
+}
