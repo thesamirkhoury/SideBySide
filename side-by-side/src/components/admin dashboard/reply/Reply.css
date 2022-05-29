@@ -1,0 +1,95 @@
+.reply-component {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  box-sizing: border-box;
+  padding: 20px 100px;
+  padding-bottom: 50px;
+}
+.reply-component > h1 {
+  height: 78px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 78px;
+  text-align: right;
+  color: #000000;
+}
+.singleLin {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 10px;
+  margin-bottom: -35px;
+  text-align: right;
+}
+.singleLin > h2 {
+  margin-left: 10px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+.singleLin > p {
+}
+.col {
+  flex-direction: column !important;
+  text-align: right !important;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.col > h1 {
+  margin-bottom: -20px !important;
+}
+.col > p {
+  margin-top: -20px;
+}
+
+.replyBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 50px;
+}
+
+.cancelB {
+  border: 1px solid #b60808;
+  background-color: white;
+  color: black;
+  width: 100px;
+  height: 29px;
+  border-radius: 5px;
+  margin: 20px;
+  margin-top: 90px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 250px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+.sendB {
+  background: #0aabb8;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 29px;
+  border-radius: 5px;
+  margin: 20px;
+  margin-top: 90px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 250px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
