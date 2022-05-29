@@ -1,0 +1,74 @@
+.homepage-component {
+  background-color: rgba(203, 232, 233, 0.897);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  height: 100vh;
+  padding-top: 100px;
+
+}
+.image-side {
+  flex: 6;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.emoji {
+  width: 90%;
+  margin-left: 100px;
+
+}
+.content-side {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content-side>h1{
+  font-size: 65px;
+  margin-bottom: 5px;
+}
+.home-login {
+  width: 209px;
+  height: 35px;
+  border: none;
+  background: #08abb6;
+  border-radius: 12px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 1);
+
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  /* or 22px */
+
+  letter-spacing: 0.005em;
+
+  color: #ffffff;
+}
+.home-waitinglist {
+  width: 209px;
+  margin: 20px 5px;
+  height: 35px;
+  border: 1px solid rgba(8, 171, 182, 1);
+  background-color: #fff;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+
+  color: #000000;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.chat{
+  position: absolute;
+  bottom: 20px;
+}
