@@ -1,0 +1,32 @@
+.sidebar-user {
+  width: 100%;
+  background-color: #ffffff !important;
+  margin-top: 1.5px;
+  padding: 60px 20px;
+  justify-content: center;
+  align-items: center;
+  padding-right: 25px;
+  height: 130vh;
+}
+
+.single-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-right: 15px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.single-item > img {
+  margin-left: 15px;
+}
+.lower-items {
+  margin-top: 200px;
+}
+
+.link-active{
+  /* color: #09ABB6; */
+  font-weight: bold;
+}
+
