@@ -1,0 +1,94 @@
+.coupon-card {
+  width: 300px;
+  height: 200px;
+  background-color: white !important;
+  padding: 20px;
+  position: relative;
+  border-radius: 10px;
+  margin: 10px 20px;
+}
+
+.singlecoupon-detail {
+  display: flex;
+  flex-direction: column;
+  margin: -30px;
+  overflow: hidden;
+  margin-left: 100px;
+  text-align: right;
+  padding-right: 24px;
+}
+.singlecoupon-detail > h1 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 180px;
+  line-height: 50px;
+  color: #000000;
+  margin-bottom: -20px;
+}
+
+.redeem-btn-coupon {
+  margin-right: 200px;
+  background: #0aabb8;
+  border-radius: 5px;
+  width: 100px;
+  height: 29px;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.coupon-code {
+  height: 60%;
+  width: 80%;
+  background-color: #ebebf9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+.coupon-code > p {
+  font-size: 64px;
+  font-family: "Assistant";
+  font-weight: 400;
+  line-height: 76px;
+}
+.coupon-btn {
+  width: 100px;
+  height: 29px;
+  border: 1px solid #b60808;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+}
+#heading {
+  font-size: 60px;
+  text-align: right !important;
+}
+
+.modal1 {
+  font-size: 12px;
+  height: 70vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.header1 {
+  text-align: right;
+  font-size: 20px;
+}
+.content1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.coupon-code1 {
+  /* width: 80% !important; */
+  /* background-color: red; */
+}
+.coupon-btn1 {
+  margin-left: 40px !important;
+}

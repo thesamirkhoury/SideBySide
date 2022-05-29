@@ -1,0 +1,25 @@
+.Coupons-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  background-color: #e5e5e5;
+}
+.coupon-sectn{
+  display: flex;
+  flex-direction: column;
+
+}
+.coupon-heading {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 78px;
+  text-align: right;
+  color: #000000;
+}
+
+.reg {
+  display: flex;
+  justify-content: center;
+}
