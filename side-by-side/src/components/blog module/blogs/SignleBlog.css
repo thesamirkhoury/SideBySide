@@ -1,0 +1,55 @@
+.card-containerB{
+    background: #ffff;
+    width: 400px;
+    height: 368px;
+    border-radius: 20px;
+}
+.strong-1B{
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 0;
+    text-align: right;
+    
+}
+.date-paraB{
+    font-size: 12px;
+    margin-top: 0;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+.card-bodyB{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  
+    padding: 20px;
+}
+
+.main-paraB{
+    text-align: right;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.6px;
+}
+#btn-1B{
+    width: 336px;
+    margin-left: 30px;
+    border: none;
+    padding:15px 20px;
+    border-radius: 15px;
+    background-color: #F1F5FE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.blogImgB{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
