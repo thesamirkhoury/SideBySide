@@ -1,0 +1,65 @@
+
+.blog-card {
+  width: 300px;
+  height: 250px;
+  background-color: white !important;
+  padding: 20px;
+  position: relative;
+  border-radius: 10px;
+  margin: 10px 20px;
+}
+
+.single-blog-detail {
+  display: flex;
+  flex-direction: column;
+  margin: -30px;
+  overflow: hidden;
+  margin-left: 100px;
+  text-align: right;
+  padding-right: 24px;
+}
+.singleB-detail{
+  text-align: right;
+}
+.headingBlog {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 50px;
+  color: #000000;
+  margin-bottom: -20px;
+}
+
+.buttonsB-div {
+  display: flex;
+  margin-top: 25px;
+  padding: 10px;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+
+.editB-btn {
+  background: #0aabb8;
+  border-radius: 5px;
+  height: 29px;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100px !important;
+}
+.delB-btn {
+  border-radius: 5px;
+  width: 100px;
+  height: 29px;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid #b60808;
+  border-radius: 5px;
+  background-color: white;
+  width: 100px;
+}
+
