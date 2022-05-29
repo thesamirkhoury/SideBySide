@@ -1,0 +1,46 @@
+.admin-sidebar {
+  width: 100%;
+  background-color: #ffffff !important;
+  margin-top: 1.5px;
+  padding: 30px 20px;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1px;
+  height: 200vh;
+  margin-bottom: 0px !important;
+}
+.admin-upper-items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 30px;
+}
+.lower-items{
+  display: flex;
+  padding-right: 30px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.single-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-right: 15px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.single-item > img {
+  margin-left: 15px;
+}
+.lower-items {
+  margin-top: 200px;
+}
+.adminSdbr {
+  margin-top: 100px !important;
+}
+
+.link-active {
+  /* color: #09ABB6; */
+  font-weight: bold;
+}
