@@ -1,0 +1,189 @@
+.newticket-card {
+  width: 300px;
+  height: 250px;
+  background-color: white !important;
+  padding: 20px;
+  position: relative;
+  border-radius: 10px;
+  margin: 15px 20px;
+}
+
+.singleticket-detail {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-left: 60px;
+  text-align: right;
+  padding-right: 24px;
+  margin-bottom: -30px;
+  margin-top: -20px;
+}
+.status {
+}
+/* background: #F2DADA;
+border-radius: 4px; */
+.status > span {
+  background: #daf2ec;
+  border-radius: 4px;
+  padding: 6px;
+}
+.statusopen > span {
+  background: #F2DADA;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.singleticket-detail > h2 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
+  color: #000000;
+  margin-bottom: -20px;
+}
+
+.expand-ticket {
+  width: 150px;
+  height: 50px;
+  background: #f1f5fe;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 70px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.expand-ticket > img {
+  margin: 12px;
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 50px;
+}
+
+
+.expandModel{
+  height:  90vh !important;
+  width: 100%;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  flex-direction: column;
+  position: relative;
+}
+.closeEx{
+  position: absolute !important;
+  bottom: 50px;
+  right: 40%;
+
+
+}
+.hdr{
+  padding: 20px 30px !important;
+  background-color: red;
+
+}
+
+.expandedticket-component {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  padding: 20px 30px;
+}
+.expand-header {
+  background-color: white;
+}
+.single-line {
+  background-color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  height: 35px;
+  padding: 5px 20px;
+}
+.single-line > h2 {
+  margin-left: 20px;
+}
+.single-line > p {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+.status-exp {
+  width: 63px;
+  height: 24px;
+  background: #daf2ec;
+  border-radius: 4px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
+  color: #3caa91;
+  padding: 5px;
+  text-align: center !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+}
+.status-exp2{
+  padding: 5px 9px;
+  background-color: #f2dada;
+  border-radius: 4px;
+  height: 25px;
+  margin-right: 40px;
+  
+}
+.expandTime {
+  margin-top: 5px !important;
+}
+.expan {
+  margin-right: 50px !important;
+}
+
+.description-expand {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+.sng-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  margin-bottom: -20px;
+}
+.sng-desc > h2 {
+  margin-bottom: -5px;
+}
+.closeExp-btn {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #000000;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100px;
+  height: 29px;
+  border: 1px solid #b60808;
+  border-radius: 5px;
+  margin-top: 60px !important;
+  cursor: pointer;
+  background-color: #fff;
+}
