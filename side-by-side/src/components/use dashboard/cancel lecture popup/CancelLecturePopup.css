@@ -1,0 +1,30 @@
+.cancelLecture-popup {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  padding-top: 10px;
+  padding-right: 100px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background-color: #ffffff;
+  height: 100vh;
+}
+.cancelLecture-popup > h3 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  text-align: right;
+  letter-spacing: 0.005em;
+  color: #000000;
+}
+
+.horizontal-rowCan {
+    color: #000000;
+    height: 1px;
+    border: none;
+    background-color: #ebebf9;
+    transform: rotate(-180deg);
+    width: 98%;
+  }

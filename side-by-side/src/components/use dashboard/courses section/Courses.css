@@ -1,0 +1,160 @@
+.courses-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.courses-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 20px 100px;
+}
+.courses-component > h1 {
+  margin-right: 25px;
+}
+.reg {
+  display: flex;
+  justify-content: center;
+}
+
+.course-card {
+  width: 300px;
+  height: 250px;
+  background-color: white !important;
+  padding: 20px;
+  position: relative;
+  border-radius: 10px;
+  margin: 10px 20px;
+  text-align: right !important;
+}
+
+.single-detail {
+  display: flex;
+  flex-direction: column;
+  margin: -30px;
+  overflow: hidden;
+  margin-left: 100px;
+  text-align: right;
+  padding-right: 24px;
+}
+.single-detail > h1 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
+  color: #000000;
+  margin-bottom: -20px;
+}
+
+.dl-btn {
+  margin-right: 200px;
+  background: #fff;
+  border-radius: 5px;
+  width: 100px;
+  height: 29px;
+  color: #000;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid #b60808;
+  border-radius: 5px;
+}
+.reg-btn {
+  margin-right: 200px;
+  background: #0AABB8;
+  border-radius: 5px;
+  width: 100px;
+  height: 29px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.cancelLecture-popup {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  padding-top: 10px;
+  padding-right: 100px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background-color: #ffffff;
+  height: 100vh;
+}
+.cancelLecture-popup > h3 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  text-align: right;
+  letter-spacing: 0.005em;
+  color: #000000;
+}
+
+.horizontal-rowCan {
+  color: #000000;
+  height: 1px;
+  border: none;
+  background-color: #ebebf9;
+  transform: rotate(-180deg);
+  width: 98%;
+}
+
+.cancel-confirm-btns {
+  justify-content: center;
+}
+
+.modal {
+  font-size: 12px;
+  height: 60vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+  text-align: right !important;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
