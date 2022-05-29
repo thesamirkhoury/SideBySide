@@ -24,7 +24,7 @@ export const UserContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [userLogged, setUserLogged] = useState(false);
-  const [adminLogged, setAdminLogged] = useState(true);
+  const [adminLogged, setAdminLogged] = useState(false);
 
   useState(() => {
     setLoading(true);

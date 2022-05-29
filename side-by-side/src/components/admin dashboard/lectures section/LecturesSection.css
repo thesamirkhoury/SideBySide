@@ -1,0 +1,44 @@
+.lecture-section {
+    display: flex;
+    padding: 30px;
+    background-color: #F7F7FC;
+    flex-direction: column;
+    height: 100%;
+    text-align: right;
+    align-items: flex-end;
+    width: 90%;
+  }
+  .lectureSection-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .lectureSection-header>button{
+    margin-left: 50px;
+  }
+  .lectureSection-header>h1{
+    margin-right: 20px;
+  }
+  .lectureSection-header > button {
+    width: 100px;
+    height: 29px;
+    background: #0aabb8;
+    border-radius: 5px;
+    font-family: "Assistant";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0.005em;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .lectures-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end ;
+  }
