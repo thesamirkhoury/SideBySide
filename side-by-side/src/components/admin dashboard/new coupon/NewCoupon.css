@@ -1,0 +1,80 @@
+.newCoupon-component {
+    text-align: right;
+    padding: 50px;
+    /* background-color: white; */
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100vh;
+    padding-bottom: 70px !important;
+  }
+  .drop{
+    height: 39px !important;
+    border-radius: 5px !important;
+    background-color: white !important;
+    padding: 10px !important;
+    width: 360px !important ;
+    margin-right: 1px !important;
+
+  }
+  .drop>option{
+    padding: 15px !important;
+  }
+  .newCoupon-component > p {
+    font-family: "Assistant";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+    text-align: right;
+    margin-bottom: 2px;
+    margin-right: 13px;
+  }
+  .input-newCoupon {
+    border: 1px solid rgba(208, 212, 217, 1);
+    width: 350px;
+    margin-top: 5px;
+  }
+  
+ 
+  .newCop-btn{
+      width: 330px;
+      height: 51px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: #0AABB8;
+      border-radius: 10px;
+      margin: 30px;
+      color: white;
+      height: 29px;
+      width: 100px;
+  }
+  .newCop-btn-cancel{
+    font-family: 'Assistant';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px; 
+    letter-spacing: 0.005em;
+    color: #000000;
+    border: 1px solid rgba(182, 8, 8, 1);
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 29px;
+    width: 100px;
+    margin-right: 70px;
+  }
+  .btns-newCop{
+      display: flex;
+      flex-direction: row;
+      padding: 10px 60px;
+      justify-content: center;
+      align-items: center;
+  }
+  .newCoupon-component>input{
+    padding: 10px !important;
+
+  }
+  
