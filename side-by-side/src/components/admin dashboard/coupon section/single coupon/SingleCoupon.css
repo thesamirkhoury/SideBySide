@@ -1,0 +1,63 @@
+.coupon-card {
+  width: 300px;
+  height: 220px;
+  background-color: white !important;
+  padding: 20px;
+  position: relative;
+  border-radius: 10px;
+  margin: 10px 20px;
+}
+
+.singlecoupon-detail {
+  display: flex;
+  flex-direction: column;
+  margin: -30px;
+  overflow: hidden;
+  margin-left: 100px;
+  text-align: right;
+  padding-right: 24px;
+}
+.singlecoupon-detail > h1 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
+  color: #000000;
+  margin-bottom: -20px;
+}
+
+.edit-btn-coupon {
+  background: #0aabb8;
+  border-radius: 5px;
+  width: 100px;
+  height: 29px;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.delt-btn-coupon {
+  width: 100px;
+  height: 29px;
+  left: 87px;
+  top: 777px;
+  border: 1px solid #b60808;
+  border-radius: 5px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #000000;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.coupon-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}

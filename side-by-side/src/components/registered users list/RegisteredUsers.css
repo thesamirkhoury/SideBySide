@@ -1,0 +1,50 @@
+.Reguser-sectin {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 20px 100px;
+    background-color: #fff;
+    height: 100vh;
+   
+  }
+  .Reguser-table {
+    width: 70%;
+    padding: 5px;
+  }
+ 
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #ffffff;
+    border: none;
+  }
+  
+  td,
+  th {
+    padding: 12px;
+    border-color: #ecedee;
+  }
+  
+  table tr td td {
+    border-color: #ecedee;
+    border-collapse: "collapse";
+  }
+
+  .closeBtn {
+    border-radius: 5px;
+    width: 100px;
+    height: 29px;
+    font-family: "Assistant";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0.005em;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #b60808;
+    border-radius: 5px;
+    background-color: white;
+    margin: 50px;
+  }
