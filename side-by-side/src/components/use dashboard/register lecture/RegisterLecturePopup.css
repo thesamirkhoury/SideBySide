@@ -1,0 +1,87 @@
+.regLecture-popup {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 50px;
+  padding-top: 10px;
+  padding-right: 100px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100vh;
+  padding-right: 50px;
+  margin-right: 100px;
+}
+.regLecture-popup > h1 {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 78px;
+  text-align: right;
+  color: #000000;
+}
+
+.single-input {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+.single-input > label {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  text-align: right;
+  letter-spacing: 0.005em;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.single-input > input {
+  background: #ffffff;
+  border: 1px solid #d0d4d9;
+  border-radius: 5px;
+  width: 400px;
+  padding: 8px;
+}
+.horizontal-row {
+  color: #000000;
+  height: 1px;
+  border: none;
+  background-color: #ebebf9;
+  transform: rotate(-180deg);
+  margin-top: -40px;
+  margin-bottom: 50px;
+  width: 98%;
+}
+
+.cancel-confirm-btns {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin-top: 50px;
+  width: 100%;
+}
+.confirm {
+  width: 100px;
+  height: 29px;
+  background: #0aabb8;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+}
+.cancel {
+  cursor: pointer;
+  width: 100px;
+  height: 29px;
+  background: white;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  border: 1px solid #b60808;
+  border-radius: 5px;
+  margin-right: 150px;
+}
