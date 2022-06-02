@@ -2,39 +2,47 @@ import "./Login.css";
 import { auth, authProvider } from "../../../firebase/Firebase.config";
 
 import React, { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase/Firebase.config";
 import { useUserContext } from "../../context/UseContext";
 import { async } from "@firebase/util";
+import { Nav } from "react-bootstrap";
 
 function Login() {
-  const { signInUser, userLogged,setUserLogged, wrongCreds } = useUserContext();
+  const { signInUser, userLogged, error } = useUserContext();
   const [details, setDetails] = useState([]);
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
+    
   });
   const onChange1 = (e) => {
     // e.defaultPrevent();
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-
   const [errorMsg, setErrorMsg] = useState(
     "Wrong Credentials. Please try again."
   );
 
   const [triggr, setTringer] = useState(false);
-  const handleLoggedin = async () => {
-    await signInUser(user.email, user.password);
-    if (!userLogged) {
-       await setTringer(true);
+  const [link, setLink] = useState("");
+
+  const handleLogin = () => {
+    signInUser(user.email, user.password);
+    if (error) {
+      setLink("/login");
     } else {
-      // setUserLogged(true);
-      // await setTringer(false);
+      setLink("/userdashboard/lectures");
     }
   };
+
+   useEffect(()=>{
+
+   },[signInUser, link, error])
+
 
   return (
     <div className="Login-container">
@@ -63,33 +71,20 @@ function Login() {
         </div>
       </div>
       <div className="btns">
-        {!triggr ? (
-          <button
-            // onClick={() => {
-            //   signInUser(user.email, user.password);
-            // }}
-            onClick={handleLoggedin}
-            className="btn-1"
-          >
+        
+        <Link to={`${!userLogged ? "/login" : '/userdashbaord/lectures'}`}>
+          <button type="submit" onClick={handleLogin} className="btn-1">
             כניסה לאזור האישי
           </button>
-        ) : (
-          <Link to="/userdashboard/lectures">
-            <button
-              onClick={handleLoggedin}
-              className="btn-1"
-            >
-              כניסה לאזור האישי
-            </button>
-          </Link>
-        )}
-
-        <Link to="/forgotpassword">
-          <button className="btn-2">שכחת את הסיסמה</button>
         </Link>
+
+        <NavLink to="/resetpassword">
+          <button className="btn-2">שכחת את הסיסמה</button>
+        </NavLink>
       </div>
-      {triggr ? (
-        <p style={{ width: "30vw", padding: "10px" }}>{errorMsg}</p>
+
+      {error ? (
+        <p style={{ width: "30vw", padding: "10px" }}>Credentials incorrect!</p>
       ) : (
         ""
       )}
