@@ -1,7 +1,6 @@
 import React from "react";
 import "./homepage.css";
 import emoji from "../../assests/homepage-emoji.svg";
-import chat from '../../assests/chat-icon.svg'
 import { NavLink } from "react-router-dom";
 function Homepage() {
   return (
