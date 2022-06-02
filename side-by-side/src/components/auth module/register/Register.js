@@ -10,7 +10,7 @@ import {
   ref,
   uploadBytes,
   getDownloadURL,
-  listAll,  
+  listAll,
   list,
 } from "firebase/storage";
 
@@ -29,11 +29,15 @@ function Register() {
     password: "",
     numberOfChildren: 0,
     isApproved: false,
+    isAdmin: false,
   });
   const onChange1 = (e) => {
     // e.defaultPrevent();
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  
+  const [regConfirm, setRegConfirm] = useState(false);
 
   const handleSubmit = async () => {
     try {
@@ -48,9 +52,11 @@ function Register() {
         password: user.password,
         numberOfChildren: user.numberOfChildren,
         isApproved: false,
+        isAdmin: false
       });
       console.log("Document written with ID: ", docRef.id);
       uploadFile();
+      setRegConfirm(true);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -65,7 +71,10 @@ function Register() {
   const imagesListRef = ref(storage, "images/");
   const uploadFile = () => {
     if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name+ user.id + v4()}`);
+    const imageRef = ref(
+      storage,
+      `images/${imageUpload.name + user.id + v4()}`
+    );
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrls((prev) => [...prev, url]);
@@ -94,26 +103,35 @@ function Register() {
           <div className="input-boxR">
             <input
               onChange={onChange1}
-              id="firstName"
-              type="text"
-              name="firstName"
+              id="lastName"
+              name="lastName"
               dir="rtl"
+              type="text"
             />
             <label for="firstName">:שם משפחה</label>
           </div>
           <div className="input-boxR">
             <input
               onChange={onChange1}
-              id="lastName"
-              name="lastName"
-              dir="rtl"
+              id="firstName"
               type="text"
+              name="firstName"
+              dir="rtl"
             />
             <label for="lastName">שם פרטי</label>
           </div>
         </div>
 
         <div className="singleLine-inputs">
+          <div className="input-boxR">
+            <select onChange={onChange1} dir="rtl" name="city" id="city">
+              <option value="city1">city1</option>
+              <option value="city2">city2</option>
+              <option value="city3">city3</option>
+            </select>
+            <label for="city">: עיר מגורים </label>
+          </div>
+
           <div className="input-boxR">
             <input
               onChange={onChange1}
@@ -122,15 +140,7 @@ function Register() {
               type="date"
               dir="rtl"
             />
-            <label for="dateOfBirth">:עיר מגורים</label>
-          </div>
-          <div className="input-boxR">
-            <select onChange={onChange1} dir="rtl" name="city" id="city">
-              <option value="city1">city1</option>
-              <option value="city2">city2</option>
-              <option value="city3">city3</option>
-            </select>
-            <label for="city">:תאריך לידה </label>
+            <label for="dateOfBirth">:תאריך לידה</label>
           </div>
         </div>
 
@@ -143,7 +153,7 @@ function Register() {
               type="number"
               dir="rtl"
             />
-            <label for="phoneNumber">:מייל ph</label>
+            <label for="email">:מספר טלפון</label>
           </div>
           <div className="input-boxR">
             <input
@@ -153,7 +163,8 @@ function Register() {
               type="email"
               dir="rtl"
             />
-            <label for="email">:מספר טלפון</label>
+
+            <label for="phoneNumber">:מייל</label>
           </div>
         </div>
         <div className="singleLine-inputs">
@@ -165,7 +176,7 @@ function Register() {
               dir="rtl"
               type="number"
             />
-            <label for="children">:מצב משפחתי</label>
+            <label for="children">:מספר ילדים</label>
           </div>
 
           <div className="input-boxR">
@@ -179,7 +190,7 @@ function Register() {
               <option value="Married">Married</option>
             </select>
 
-            <label for="maritalStatus">:מספר ילדים</label>
+            <label for="maritalStatus">:סיסמה</label>
           </div>
         </div>
         <div className="singleLine-inputs">
@@ -190,7 +201,7 @@ function Register() {
               type="password"
               dir="rtl"
             />
-            <label for="confirmPassword">:סיסמה:</label>
+            <label for="confirmPassword">:סיסמה בשינית:</label>
           </div>
 
           <div className="input-boxR">
@@ -201,7 +212,7 @@ function Register() {
               type="password"
               dir="rtl"
             />
-            <label for="password">:סיסמה בשינית</label>
+            <label for="password">:סיסמה </label>
           </div>
         </div>
       </div>
@@ -215,6 +226,7 @@ function Register() {
           }}
         />
       </div>
+
       <NavLink to="/userregister">
         <div className="btnsR">
           <button type="submit" onClick={handleSubmit} className="btn-1R">
@@ -222,6 +234,14 @@ function Register() {
           </button>
         </div>
       </NavLink>
+      {regConfirm ? (
+        <h2>
+          Regisrede successfully to the waiting list!{" "}
+          <a href="/login">go to login page</a>
+        </h2>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
