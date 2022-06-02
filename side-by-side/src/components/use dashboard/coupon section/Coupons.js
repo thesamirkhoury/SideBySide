@@ -41,13 +41,7 @@ function Coupons() {
       "-" +
       ("0" + u.getUTCDate()).slice(-2) +
       " " +
-      ("0" + u.getUTCHours()).slice(-2) +
-      ":" +
-      ("0" + u.getUTCMinutes()).slice(-2) +
-      ":" +
-      ("0" + u.getUTCSeconds()).slice(-2) +
-      "." +
-      (u.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5)
+      (u.getUTCMilliseconds() / 1000).toFixed(0).slice(2, 5)
     );
   }
   console.log("coupons: ", coupons)
@@ -64,7 +58,7 @@ function Coupons() {
 
       {
         coupons.map(coupon=>{
-          return <SingleCoupon couponID={coupon.id} couponName={coupon.couponName} couponBusiness={coupon.couponBusiness} couponTime={unixTime(coupon.couponValidity)} couponeCode={coupon.couponCode} />
+          return <SingleCoupon couponID={coupon.id} couponName={coupon.couponName} couponBusiness={coupon.couponBusiness} couponTime={unixTime(coupon.couponValidity.seconds)} couponeCode={coupon.couponCode} />
         })
       }
         
