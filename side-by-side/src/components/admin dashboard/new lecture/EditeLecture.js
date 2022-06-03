@@ -25,12 +25,13 @@ function EditeLecture() {
 
   const handleSubmit = async () => {
     const docRef = updateDoc(doc(db, "courses", location.state.id), {
-      courseName: location.state.courseName,
-      courseLocation: location.state.courseLocation,
-      courseTime: location.state.courseTime,
-      courseCost: location.state.courseCost,
+      courseName: courses.courseName,
+      courseLocation: courses.courseLocation,
+      courseTime: courses.courseTime,
+      courseCost: courses.courseCost,
     })
       .then((res) => {
+
         console.log("updated successfully..!");
       })
       .catch((err) => console.log(err));

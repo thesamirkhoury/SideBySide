@@ -16,6 +16,7 @@ import { db } from "../../../firebase/Firebase.config";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
+
 function LecturesSection() {
   const [courses, setCourses] = useState([]);
   const [trigger, setTrigger] = useState(false);
@@ -28,7 +29,7 @@ function LecturesSection() {
       id: doc.id,
     }));
     setCourses(data);
-    // console.log("All courses", data);
+    console.log("All courses", data);
   };
 
   useEffect(() => {
@@ -43,14 +44,7 @@ function LecturesSection() {
       ("0" + u.getUTCMonth()).slice(-2) +
       "-" +
       ("0" + u.getUTCDate()).slice(-2) +
-      " " +
-      ("0" + u.getUTCHours()).slice(-2) +
-      ":" +
-      ("0" + u.getUTCMinutes()).slice(-2) +
-      ":" +
-      ("0" + u.getUTCSeconds()).slice(-2) +
-      "." +
-      (u.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5)
+      (u.getUTCMilliseconds() / 1000).toFixed(0).slice(2, 5)
     );
   }
 
@@ -78,7 +72,7 @@ function LecturesSection() {
               </div>
               <div className="singleL-detail">
                 <h1>תאריך וזמן</h1>
-                <p> {unixTime(course.courseTime)}</p>
+                <p> {course.courseTime}</p>
               </div>
               <div className="singleL-detail">
                 <h1>עלות השתתפות</h1>
@@ -86,25 +80,55 @@ function LecturesSection() {
               </div>
 
               <div className="buttonsL-div">
-                <button
-                  onClick={() => {
-                    let dataToupdate = doc(db, "courses", course.id);
-                    deleteDoc(dataToupdate)
-                      .then((res) => {
-                        console.log("deleted", res);
-                        setTrigger(true);
-                      })
-                      .catch((err) => {
-                        console.log("ERROR", err);
-                      });
-                  }}
-                  className="delL-btn"
+                <Popup
+                  trigger={<button className="delL-btn">מחק</button>}
+                  modal
                 >
-                  מחק
-                </button>
-                <NavLink to="/admindashboard/registeredusers">
+                  {(close) => (
+                    <div className="modal">
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
+                      <div className="header"></div>
+                      <div className="content">
+                        <h3>are your sure to delete?</h3>
+                        <br />
+
+                        <div className="cancel-confirm-btns">
+                          <button
+                            className="cancel"
+                            onClick={() => {
+                              console.log("modal closed ");
+                              close();
+                            }}
+                          >
+                            cancel
+                          </button>
+                          <button
+                            onClick={() => {
+                              let dataToupdate = doc(db, "courses", course.id);
+                              deleteDoc(dataToupdate)
+                                .then((res) => {
+                                  console.log("deleted", res);
+                                  setTrigger(true);
+                                })
+                                .catch((err) => {
+                                  console.log("ERROR", err);
+                                });
+                            }}
+                            className="confirm"
+                          >
+                            confirm
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </Popup>
+
+                <Link to="/admindashboard/registeredusers" state={course}>
                   <button className="regL-btn">נרשמים</button>
-                </NavLink>
+                </Link>
 
                 <Link to="/admindashboard/editlecture" state={course}>
                   <button className="editL-btn">עדכן</button>
