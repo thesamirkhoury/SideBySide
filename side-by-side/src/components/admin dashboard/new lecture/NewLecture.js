@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./NewLecture.css";
 
@@ -15,18 +15,21 @@ import {
 
 function NewLecture() {
   const [courses, setCourses] = useState([]);
- 
+
   const onChange2 = (e) => {
     // e.defaultPrevent();
     setCourses({ ...courses, [e.target.name]: e.target.value });
   };
   const handleSubmit = async () => {
+    const registeredUser =[]
     try {
       const docRef = await addDoc(collection(db, "courses"), {
         courseName: courses.courseName,
         courseLocation: courses.courseLocation,
         courseTime: courses.courseTime,
         courseCost: courses.courseCost,
+        registeredUsers: registeredUser,
+        isRegistered: false
       });
 
       console.log("new lecture written with ID: ", docRef.id);
@@ -39,7 +42,7 @@ function NewLecture() {
       <div className="content-newLect">
         <h1>הוספת סדנא חדשה</h1>
 
-        <p>שם ההטבה</p>
+        <p>שם הסדנא</p>
         <input
           type="text"
           className="input-newLectur"
@@ -49,7 +52,7 @@ function NewLecture() {
           onChange={onChange2}
         />
 
-        <p>שם עסק</p>
+        <p>מיקום</p>
         <input
           type="text"
           className="input-newLectur"
@@ -57,20 +60,19 @@ function NewLecture() {
           lang="Hebrew"
           name="courseLocation"
           onChange={onChange2}
-
         />
 
-        <p>עיר</p>
+        <p>תאריך וזמן</p>
         <input
           type="date"
           className="input-newLectur"
           dir="rtl"
           lang="Hebrew"
-          name='courseTime'
+          name="courseTime"
           onChange={onChange2}
         />
 
-        <p>תוקף</p>
+        <p>עלות השתתפות</p>
         <input
           type="text"
           className="input-newLectur"
@@ -93,7 +95,9 @@ function NewLecture() {
             <button className="newLec-btn-cancel">ביטול</button>
           </NavLink>
           <NavLink to="/admindashboard/lecturessection">
-            <button onClick={handleSubmit} className="newLec-btn">פרסם</button>
+            <button onClick={handleSubmit} className="newLec-btn">
+              פרסם
+            </button>
           </NavLink>
         </div>
       </div>
