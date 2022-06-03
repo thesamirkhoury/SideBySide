@@ -16,12 +16,9 @@ function Homepage() {
           <button className="home-login"> התחבר לאזור האישי</button>
         </NavLink>
         <NavLink to="/userregister">
-          <button className="home-waitinglist"> הכנס לרשימת ההמתנה </button>
+          <button className="home-waitinglist"> להצטרפות</button>
         </NavLink>
       </div>
-      {/* <div className="chat">
-        <a href="https://www.tidio.com/panel/dashboard" target="_blank" ><img src={chat} alt="chat"/></a>
-      </div> */}
     </div>
   );
 }
