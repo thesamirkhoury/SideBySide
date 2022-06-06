@@ -26,8 +26,7 @@ function Blogs() {
     }));
     setBlogs(data);
   };
-  // console("blogs: ", blogs);
-
+  
   React.useEffect(() => {
     userData();
   }, [trigger]);
@@ -50,6 +49,9 @@ function Blogs() {
       (u.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5)
     );
   }
+
+  const [searchWord, setSearchWord] = useState("");
+
   return (
     <div className="Blog-container">
       <div className="upper-portionB">
@@ -58,21 +60,35 @@ function Blogs() {
             className="input-boxB"
             dir="rtl"
             placeholder="הזין ערך לחיפוש"
+            onChange={(e) => setSearchWord(e.target.value)}
           />
           <BsSearch />
         </div>
       </div>
 
       <div className="grid-containerB">
-        {blogs.map((blog) => {
-          return (
-            <SingleBlog
-              blogTopic={blog.blogTopic}
-              blogDescription={blog.blogDescription}
-              blogTime={standardTime(blog.blogTime)}
-            />
-          );
-        })}
+        {blogs
+          .filter((value) => {
+            if (searchWord == "") {
+              return value;
+            } else if (
+              value.blogTopic
+                .toLowerCase()
+                .includes(searchWord.toLocaleLowerCase())
+            ) {
+              return value;
+            }
+          })
+          .map((blog) => {
+            return (
+              <SingleBlog
+                blogTopic={blog.blogTopic}
+                blogDescription={blog.blogDescription}
+                blogTime={(blog.blogTime.time)}
+                blogPhoto={blog?.blogPhoto?.imageUrl}
+              />
+            );
+          })}
       </div>
     </div>
   );

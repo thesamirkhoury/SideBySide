@@ -4,11 +4,11 @@ import { CgArrowsExpandLeft } from "react-icons/cg";
 import { Link, NavLink } from "react-router-dom";
 import blogImage from "../../../assests/BlogImage2.svg";
 import "./SignleBlog.css";
-function SingleBlog({blogTopic,blogDescription,blogTime}) {
+function SingleBlog({blogTopic,blogDescription,blogTime, blogPhoto}) {
   return (
     <div className="card-containerB">
       <div className="card-bodyB">
-        <img src={blogImage} alt="blogImage" className="blogImgB" />
+        <img src={blogPhoto} alt="blogImage" className="blogImgB" width="200" height='150' />
 
         <div className="card-headerB">
           <strong className="strong-1B">{blogTopic}</strong>
@@ -26,7 +26,7 @@ function SingleBlog({blogTopic,blogDescription,blogTime}) {
         </div>
       </div>
     
-      <Link state={{blogTopic,blogDescription,blogTime}}
+      <Link state={{blogTopic,blogDescription,blogTime ,blogPhoto}}
       
       to="/blogs/expandedblog">
         <button id="btn-1B">

@@ -49,7 +49,10 @@
 }
 
 .grid-containerB{
-  display: grid;
+  display: flex;
   margin: 0px 40px;
-  grid-template-columns: auto auto auto;
+  flex-wrap: wrap;
+  justify-content: end;
+  
+
 }
