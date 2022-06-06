@@ -24,7 +24,7 @@ function UpdateExpand() {
       <hr style={{ width: "80%" }}></hr>
       <div className="content-Exp">
         <img
-          src={BlogImage}
+          src={location.state?.blogPhoto}
           width="189"
           height="166"
           alt="blogImg"
