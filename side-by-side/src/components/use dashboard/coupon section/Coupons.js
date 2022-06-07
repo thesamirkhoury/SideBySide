@@ -25,7 +25,6 @@ function Coupons() {
       id: doc.id,
     }));
     setCoupons(data);
-    // console.log("All coupone", data);
   };
 
   useEffect(() => {
@@ -45,12 +44,6 @@ function Coupons() {
     );
   }
   console.log("coupons: ", coupons)
-
-
-
-
-
-
   return (
     <div className="coupon-sectn">
       <h1 className="coupon-heading" style={{textAlign:'right', padding:'10px 50px'}}>הטבות בשבילך</h1>
