@@ -23,10 +23,11 @@ function UpdateExpand() {
       </div>
       <hr style={{ width: "80%" }}></hr>
       <div className="content-Exp">
+        <br/>
         <img
           src={location.state?.blogPhoto}
-          width="189"
-          height="166"
+          width="440"
+          height="266"
           alt="blogImg"
           className="blogImg"
         />
@@ -34,7 +35,7 @@ function UpdateExpand() {
         {location.state.blogDescription}
         </p>
       </div>
-
+      <br/>
       <NavLink to="/blogs">
         <div className="bExp-btn">
           <button className="expandExp">סגור חלון</button>
