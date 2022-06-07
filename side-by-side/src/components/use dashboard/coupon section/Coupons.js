@@ -33,7 +33,7 @@ function Coupons() {
   }, []);
 
   function unixTime(unixtime) {
-    var u = new Date(unixtime * 1000);
+    var u = new Date(unixtime );
     return (
       u.getUTCFullYear() +
       "-" +
@@ -58,7 +58,7 @@ function Coupons() {
 
       {
         coupons.map(coupon=>{
-          return <SingleCoupon couponID={coupon.id} couponName={coupon.couponName} couponBusiness={coupon.couponBusiness} couponTime={unixTime(coupon.couponValidity.seconds)} couponeCode={coupon.couponCode} />
+          return <SingleCoupon couponID={coupon.id} couponName={coupon.couponName} couponBusiness={coupon.couponBusiness} couponTime={unixTime(coupon.couponValidity)} couponeCode={coupon.couponCode} />
         })
       }
         

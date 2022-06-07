@@ -38,6 +38,12 @@
   outline: none;
   cursor: pointer;
   margin-top: 25px;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
 }
 
 .coupon-code {
