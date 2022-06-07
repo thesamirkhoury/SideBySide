@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -7,10 +6,11 @@ import {
   signOut,
   updateProfile,
   updateDoc,
+  getAuth,
   sendPasswordResetEmail,
 } from "firebase/auth";
 
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import { auth, db } from "../../firebase/Firebase.config";
 
 export const UserContext = createContext({});
@@ -25,6 +25,8 @@ export const UserContextProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [userLogged, setUserLogged] = useState(false);
   const [adminLogged, setAdminLogged] = useState(false);
+  const [ticketTrigger, setTicketTrigger] = useState(true);
+  const [tickets, setTickets] = useState([]);
 
   useState(() => {
     setLoading(true);
@@ -45,28 +47,64 @@ export const UserContextProvider = ({ children }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(async () => {
         console.log("After registration", auth);
-        const docRef2 = await addDoc(
-          collection(db, "userInfo", auth.currentUser.uid),
-          {
-            firstName: user.firstName,
-            lastName: user.lastName,
-          }
-        );
       })
-      .then((res) => console.log(res))
+      .then((res) => {})
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   };
 
-  const [wrongCreds, setWrongCreds] = useState("");
+  const [adminusers, setAdminUsers] = useState([]);
+  const [loggedUserDetails, setLoggedUserDetails] = useState();
+
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
   const signInUser = (email, password) => {
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        console.log("User which is currently logged in:", res);
-        localStorage.setItem("currentUser",JSON.stringify(res.user));
-        setUserLogged(true);
+      .then(async (res) => {
+        const userData = async () => {
+          const q = query(collection(db, "admin"));
+          const querySnapshot = await getDocs(q);
+          const data = querySnapshot.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }));
+
+          for (var i = 0; i <= data?.length; i++) {
+            if (data[i].isAdmin && auth.currentUser.email == data[i].email) {
+              // console.log("ADMIN DATA", data[i]);
+              setAdminLogged(true);
+              setIsAdminLoggedIn(true);
+              setUserLogged(false);
+              break;
+            } else if (
+              !data[i].isAdmin &&
+              auth.currentUser.email == data[i].email
+            ) {
+              setAdminLogged(false);
+
+              setUserLogged(true);
+
+              break;
+            }
+          }
+
+          data?.map((admin) => {
+            if (admin.isAdmin && auth.currentUser.email == admin.email) {
+              console.log("ADMIN DATA", admin);
+
+              setAdminLogged(true);
+            } else if (!admin.isAdmin && auth.currentUser.email == admin) {
+              setAdminLogged(true);
+            }
+          });
+        };
+
+        console.log("Logged user details: ", loggedUserDetails);
+
+        localStorage.setItem("currentUser", JSON.stringify(res.user));
+
+        userData();
       })
       .catch((err) => {
         setError(err.code);
@@ -78,8 +116,20 @@ export const UserContextProvider = ({ children }) => {
     signOut(auth);
   };
 
+  const [resetPass, setResetPass] = useState("");
   const forgotPassword = (email) => {
-    return sendPasswordResetEmail(auth, email);
+    return sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // console.log("Im hereee in reset pass: ");
+        setResetPass("Password reset link has been sent to your email");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setResetPass("email is not found in the table.");
+
+        // console.log("errro in reseting pass...");
+      });
   };
 
   const contextValue = {
@@ -94,6 +144,11 @@ export const UserContextProvider = ({ children }) => {
     setUserLogged,
     adminLogged,
     setAdminLogged,
+    tickets,
+    setTickets,
+    resetPass,
+    setResetPass,
+    isAdminLoggedIn,
   };
   return (
     <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
