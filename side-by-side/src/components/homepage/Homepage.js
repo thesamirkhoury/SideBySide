@@ -2,6 +2,9 @@ import React from "react";
 import "./homepage.css";
 import emoji from "../../assests/homepage-emoji.svg";
 import { NavLink } from "react-router-dom";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+
 function Homepage() {
   return (
     <div className="homepage-component">
