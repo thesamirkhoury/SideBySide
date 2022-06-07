@@ -1,20 +1,19 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./NewPost.css";
 import { async } from "@firebase/util";
 import { db } from "../../../firebase/Firebase.config";
+import { collection, query, getDocs } from "firebase/firestore";
+import { doc, setDoc, addDoc } from "firebase/firestore";
+
 import {
-  addDoc,
-  collection,
   ref,
   uploadBytes,
   getDownloadURL,
   listAll,
-} from "firebase/firestore";
-
-
+  list,
+} from "firebase/storage";
 import { storage } from "../../../firebase/Firebase.config";
-
 import { v4 } from "uuid";
 
 function NewPost() {
@@ -26,91 +25,119 @@ function NewPost() {
   const onChange2 = (e) => {
     // e.defaultPrevent();
     setBlog({ ...blog, [e.target.name]: e.target.value });
+    setTrig(false);
   };
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const time = new Date().toLocaleString();
+
+    setTrig(false);
     try {
       const docRef = await addDoc(collection(db, "Blogs"), {
         blogTopic: blog.blogTopic,
         blogDescription: blog.blogDescription,
+        blogPhoto: { imageUrl },
+        blogTime: { time },
       });
 
       console.log("blog written with ID: ", docRef.id);
+      setNewPost(true);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   };
 
-  // const [imageUpload, setImageUpload] = useState(null);
-  // const [imageUrls, setImageUrls] = useState([]);
 
-  // const imagesListRef = ref(storage, "images/");
-  // const uploadFile = () => {
-  //   if (imageUpload == null) return;
-  //   const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-  //   uploadBytes(imageRef, imageUpload).then((snapshot) => {
-  //     getDownloadURL(snapshot.ref).then((url) => {
-  //       setImageUrls((prev) => [...prev, url]);
-  //     });
-  //   });
-  // };
+  
 
-  // useEffect(() => {
-  //   listAll(imagesListRef).then((response) => {
-  //     response.items.forEach((item) => {
-  //       getDownloadURL(item).then((url) => {
-  //         setImageUrls((prev) => [...prev, url]);
-  //         console.log(imageUrls);
-  //       });
-  //     });
-  //   });
-  // }, []);
+  const [imgUrl, setImgUrl] = useState("");
+  const [progresspercent, setProgresspercent] = useState(0);
 
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrl, setImageUrl] = useState("https://firebasestorage.googleapis.com/v0/b/sbsnewproject.appspot.com/o/images%2Fundefinedaf8ba17e-f7fd-4839-bded-c4703a736e60?alt=media&token=28550341-3d8f-4fae-a6e4-b391d109e4bf");
+  const [trig, setTrig] = useState(true);
+
+  const imagesListRef = ref(storage, "images/");
+  const [disabl, setDisable] = useState(false);
+
+
+
+  React.useEffect(() => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${blog.topic + v4()}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrl(url);
+        setTrig(false);
+        
+        setDisable(false);
+      });
+    });
+  }, [setImageUpload, imageUpload, disabl]);
+  console.log("image url: ", imageUrl);
+
+  const [newPost, setNewPost] = useState(false);
   return (
-    <div className="newpost-component">
-      <h1>הוספת פוסט חדש</h1>
+    <form onSubmit={handleSubmit}>
+      <div className="newpost-component">
+        <h1>הוספת פוסט חדש</h1>
+        {/* {setTrig(true)} */}
 
-      <p>כותרת</p>
-      <input
-        type="text"
-        name="blogTopic"
-        onChange={onChange2}
-        dir="rtl"
-        className="input-newT"
-      />
-
-      <p>תוכן</p>
-
-      <textarea
-        dir="rtl"
-        cols="70"
-        onChange={onChange2}
-        rows="10"
-        id="updateDescription"
-        name="blogDescription"
-      />
-
-   
-      <div className="inpurapper">
-        <p>העלאת קבצים</p>
+        <p>כותרת</p>
         <input
-          type="file"
-          onChange={(event) => {
-            // setImageUpload(event.target.files[0]);
-          }}
+          type="text"
+          name="blogTopic"
+          onChange={onChange2}
+          dir="rtl"
+          className="input-newT"
+          required
         />
-      </div>
 
-      <div className="btns-newCop">
-        <Link to="/admindashboard/blogssection">
-          <button className="newCop-btn-cancel">ביטול</button>
-        </Link>
-        <Link to="/admindashboard/blogssection">
-          <button onClick={() => handleSubmit()} className="newCop-btn">
-            פרסם
+
+        <p>תוכן</p>
+
+        <textarea
+          dir="rtl"
+          cols="70"
+          onChange={onChange2}
+          rows="10"
+          id="updateDescription"
+          name="blogDescription"
+          required
+        />
+
+        <div className="inpurapper">
+          <p>העלאת קבצים</p>
+          <input
+            type="file"
+            onChange={(e) => {
+              setDisable(true);
+              setImageUpload(e.target.files[0]);
+            }}
+          />
+        </div>
+
+        <div className="btns-newCop">
+          <Link to="/admindashboard/blogssection">
+            <button className="newCop-btn-cancel">ביטול</button>
+          </Link>
+          <button className={`${!disabl ? "newCop-btn" : "disableBtn"}`}>
+            {" "}
+            פרסם{" "}
           </button>
-        </Link>
+        </div>
+        {newPost && !disabl ? (
+          <span>
+            Post added successfully.
+            <Link to="/admindashboard/blogssection">
+              <b style={{ marginLeft: "8px" }}>go to blogs section</b>
+            </Link>
+          </span>
+        ) : (
+          ""
+        )}
       </div>
-    </div>
+    </form>
   );
 }
 

@@ -12,12 +12,14 @@ import {
   collection,
 } from "firebase/firestore";
 
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 function BlogsSection() {
   const [trigger, setTrigger] = useState(false);
 
   const [blogs, setBlogs] = React.useState([]);
-  
+
   const userData = async () => {
     const q = query(collection(db, "Blogs"));
     const querySnapshot = await getDocs(q);
@@ -32,6 +34,12 @@ function BlogsSection() {
   React.useEffect(() => {
     userData();
   }, [trigger]);
+
+  
+
+
+
+
 
   return (
     <div className="blog-section">
@@ -59,21 +67,52 @@ function BlogsSection() {
               </div>
 
               <div className="buttonsB-div">
-                <button
-                  onClick={() => {
-                    let dataToupdate = doc(db, "Blogs", blog.id);
-                    deleteDoc(dataToupdate)
-                      .then((res) => {
-                        setTrigger(true);
-                      })
-                      .catch((err) => {
-                        console.log("ERROR", err);
-                      });
-                  }}
-                  className="delB-btn"
+                <Popup
+                  trigger={<button className="delB-btn">מחק</button>}
+                  modal
                 >
-                  מחק
-                </button>
+                  {(close) => (
+                    <div className="modal">
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
+                      <div className="header"></div>
+                      <div className="content">
+                        <h3>are your sure to delete?</h3>
+                        <br />
+
+                        <div className="cancel-confirm-btns">
+                          <button
+                            className="cancel"
+                            onClick={() => {
+                              console.log("modal closed ");
+                              close();
+                            }}
+                          >
+                            cancel
+                          </button>
+                          <button
+                            onClick={() => {
+                              let dataToupdate = doc(db, "Blogs", blog.id);
+                              deleteDoc(dataToupdate)
+                                .then((res) => {
+                                  setTrigger(true);
+                                  close();
+                                })
+                                .catch((err) => {
+                                  console.log("ERROR", err);
+                                });
+                            }}
+                            className="confirm"
+                          >
+                            confirm
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </Popup>
+
                 <Link to="/admindashboard/editblog" state={blog}>
                   <button className="editB-btn">עדכן</button>
                 </Link>

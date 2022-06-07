@@ -39,3 +39,21 @@
   flex-wrap: wrap;
   justify-content: flex-end ;
 }
+.delB-btn{
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+
+}
+.editB-btn{
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+
+}
