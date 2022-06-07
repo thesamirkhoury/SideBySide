@@ -46,22 +46,40 @@
 }
 
 .btn-1 {
+  width: 209px;
+  height: 35px;
+  border: none;
   background: #08abb6;
-  border: solid #08abb6;
-  margin-bottom: 16px;
-  width: 100%;
-  border-radius: 10px;
-  padding: 5px 10px;
-  color: white;
+  border-radius: 12px;
   cursor: pointer;
+  color: rgba(255, 255, 255, 1);
+
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  /* or 22px */
+
+  letter-spacing: 0.005em;
+
+  color: #ffffff;
 }
 
 .btn-2 {
-  border: solid #08abb6;
-  width: 100% !important;
-  border-width: 1px;
-  cursor: pointer;
-  border-radius: 10px;
-  padding: 5px 10px;
+  width: 209px;
+  margin: 20px 5px;
+  height: 35px;
+  border: 1px solid rgba(8, 171, 182, 1);
   background-color: #fff;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+
+  color: #000000;
+  border-radius: 10px;
+  cursor: pointer;
 }

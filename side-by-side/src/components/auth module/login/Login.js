@@ -8,20 +8,22 @@ import { db } from "../../../firebase/Firebase.config";
 import { useUserContext } from "../../context/UseContext";
 import { async } from "@firebase/util";
 import { Nav } from "react-bootstrap";
+// import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { signInUser, userLogged, error } = useUserContext();
+  const { signInUser, userLogged, error, isAdminLoggedIn } = useUserContext();
   const [details, setDetails] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
-    
   });
   const onChange1 = (e) => {
     // e.defaultPrevent();
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  const nav = useNavigate();
 
   const [errorMsg, setErrorMsg] = useState(
     "Wrong Credentials. Please try again."
@@ -30,21 +32,15 @@ function Login() {
   const [triggr, setTringer] = useState(false);
   const [link, setLink] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     signInUser(user.email, user.password);
-    if (error) {
-      setLink("/login");
-    } else {
-      setLink("/userdashboard/lectures");
-    }
   };
 
-   useEffect(()=>{
-
-   },[signInUser, link, error])
-
+  useEffect(() => {}, [signInUser, link, error, isAdminLoggedIn]);
 
   return (
+    // <form>
     <div className="Login-container">
       <h1 className="title-txt">התחבר לאזור האישי</h1>
 
@@ -57,6 +53,7 @@ function Login() {
             type="email"
             dir="rtl"
             id="email"
+            required
           />
         </div>
         <div className="singleInput">
@@ -67,16 +64,16 @@ function Login() {
             type="password"
             dir="rtl"
             id="password"
+            required
           />
         </div>
       </div>
       <div className="btns">
-        
-        <Link to={`${!userLogged ? "/login" : '/userdashbaord/lectures'}`}>
-          <button type="submit" onClick={handleLogin} className="btn-1">
-            כניסה לאזור האישי
-          </button>
-        </Link>
+        {/* <Link to={`${(!userLogged)  ? "/login" : "/userdashbaord/lectures"}`}> */}
+        <button onClick={handleLogin} className="btn-1">
+          כניסה לאזור האישי
+        </button>
+        {/* </Link> */}
 
         <NavLink to="/resetpassword">
           <button className="btn-2">שכחת את הסיסמה</button>
@@ -84,11 +81,14 @@ function Login() {
       </div>
 
       {error ? (
-        <p style={{ width: "30vw", padding: "10px" }}>Credentials incorrect!</p>
+        <p style={{ width: "30vw", padding: "10px" }}>
+          Credentials incorrect. Please try again!
+        </p>
       ) : (
         ""
       )}
     </div>
+    // </form>
   );
 }
 export default Login;

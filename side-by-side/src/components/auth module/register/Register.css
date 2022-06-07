@@ -9,6 +9,13 @@
   background-color: rgba(203, 232, 233, 0.897);
   /* background-color: red; */
 }
+.disableBtn {
+  cursor: wait;
+  border:1px solide #08abb6;
+  color: black;
+  background-color: rgb(203, 203, 203);
+
+}
 .title-txtR {
   font-size: 60px;
   margin-top: 30px;
@@ -28,7 +35,7 @@
   border-radius: 5px;
   padding: 2px 10px;
 }
-option{
+option {
   padding: 2px 10px;
 }
 
@@ -106,14 +113,14 @@ option{
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
 
-.inpurapper{
+.inpurapper {
   margin: 30px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
   width: 25vw;
 }
-.inpurapper>p{
+.inpurapper > p {
   font-weight: bold;
 }
