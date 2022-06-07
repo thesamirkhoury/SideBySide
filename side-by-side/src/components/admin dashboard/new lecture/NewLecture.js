@@ -20,8 +20,12 @@ function NewLecture() {
     // e.defaultPrevent();
     setCourses({ ...courses, [e.target.name]: e.target.value });
   };
-  const handleSubmit = async () => {
-    const registeredUser =[]
+
+  const [newLec, setNewLect] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const registeredUser = [];
     try {
       const docRef = await addDoc(collection(db, "courses"), {
         courseName: courses.courseName,
@@ -29,78 +33,83 @@ function NewLecture() {
         courseTime: courses.courseTime,
         courseCost: courses.courseCost,
         registeredUsers: registeredUser,
-        isRegistered: false
+        isRegistered: false,
       });
 
       console.log("new lecture written with ID: ", docRef.id);
+      setNewLect(true);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   };
   return (
     <div className="newLectur-component">
-      <div className="content-newLect">
-        <h1>הוספת סדנא חדשה</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="content-newLect">
+          <h1>הוספת סדנא חדשה</h1>
 
-        <p>שם הסדנא</p>
-        <input
-          type="text"
-          className="input-newLectur"
-          dir="rtl"
-          lang="Hebrew"
-          name="courseName"
-          onChange={onChange2}
-        />
+          <p>שם הסדנא</p>
+          <input
+            type="text"
+            className="input-newLectur"
+            dir="rtl"
+            lang="Hebrew"
+            name="courseName"
+            onChange={onChange2}
+            required
+          />
 
-        <p>מיקום</p>
-        <input
-          type="text"
-          className="input-newLectur"
-          dir="rtl"
-          lang="Hebrew"
-          name="courseLocation"
-          onChange={onChange2}
-        />
+          <p>מיקום</p>
+          <input
+            type="text"
+            className="input-newLectur"
+            dir="rtl"
+            lang="Hebrew"
+            name="courseLocation"
+            onChange={onChange2}
+            required
+          />
 
-        <p>תאריך וזמן</p>
-        <input
-          type="date"
-          className="input-newLectur"
-          dir="rtl"
-          lang="Hebrew"
-          name="courseTime"
-          onChange={onChange2}
-        />
+          <p>תאריך וזמן</p>
+          <input
+            type="date"
+            className="input-newLectur"
+            dir="rtl"
+            lang="Hebrew"
+            name="courseTime"
+            onChange={onChange2}
+            required
+          />
 
-        <p>עלות השתתפות</p>
-        <input
-          type="text"
-          className="input-newLectur"
-          dir="rtl"
-          lang="Hebrew"
-          name="courseCost"
-          onChange={onChange2}
-        />
+          <p>עלות השתתפות</p>
+          <input
+            type="text"
+            className="input-newLectur"
+            dir="rtl"
+            lang="Hebrew"
+            name="courseCost"
+            onChange={onChange2}
+            required
+          />
 
-        {/* <p>קוד קופון</p>
-        <input
-          type="text"
-          className="input-newLectur"
-          dir="rtl"
-          lang="Hebrew"
-        /> */}
-
-        <div className="btns-newLec">
-          <NavLink to="/admindashboard/lecturessection">
-            <button className="newLec-btn-cancel">ביטול</button>
-          </NavLink>
-          <NavLink to="/admindashboard/lecturessection">
-            <button onClick={handleSubmit} className="newLec-btn">
-              פרסם
-            </button>
-          </NavLink>
+          <div className="btns-newLec">
+            <NavLink to="/admindashboard/lecturessection">
+              <button className="newLec-btn-cancel">ביטול</button>
+            </NavLink>
+            <button className="newLec-btn">פרסם</button>
+          </div>
+          {newLec ? (
+            <span>
+              New lecture added successfully!
+              <NavLink to="/admindashboard/lecturessection">
+                <b style={{ marginLeft: "8px" }}>go to lectures section</b>
+              </NavLink>
+            </span>
+          ) : (
+            ""
+          )}
         </div>
-      </div>
+      </form>
     </div>
   );
 }

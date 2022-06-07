@@ -31,7 +31,6 @@ function EditeLecture() {
       courseCost: courses.courseCost,
     })
       .then((res) => {
-
         console.log("updated successfully..!");
       })
       .catch((err) => console.log(err));
@@ -42,7 +41,7 @@ function EditeLecture() {
       <div className="content-newLect">
         <h1>הוספת סדנא חדשה</h1>
 
-        <p>שם ההטבה</p>
+        <p>שם הסדנא</p>
         <input
           type="text"
           className="input-newLectur"
@@ -50,10 +49,10 @@ function EditeLecture() {
           lang="Hebrew"
           name="courseName"
           onChange={onChange2}
-          placeholder={courses.courseName}
+          placeholder={location.state.courseName}
         />
 
-        <p>שם עסק</p>
+        <p>מיקום</p>
         <input
           type="text"
           className="input-newLectur"
@@ -61,10 +60,10 @@ function EditeLecture() {
           lang="Hebrew"
           name="courseLocation"
           onChange={onChange2}
-          placeholder={courses.courseLocation}
+          placeholder={location.state.courseLocation}
         />
 
-        <p>עיר</p>
+        <p>תאריך וזמן</p>
         <input
           type="date"
           className="input-newLectur"
@@ -72,10 +71,10 @@ function EditeLecture() {
           lang="Hebrew"
           name="courseTime"
           onChange={onChange2}
-          placeholder={courses.courseTime}
+          placeholder={location.state.courseTime}
         />
 
-        <p>תוקף</p>
+        <p>עלות השתתפות</p>
         <input
           type="text"
           className="input-newLectur"
@@ -83,16 +82,8 @@ function EditeLecture() {
           lang="Hebrew"
           name="courseCost"
           onChange={onChange2}
-          placeholder={courses.courseCost}
+          placeholder={location.state.courseName}
         />
-
-        {/* <p>קוד קופון</p>
-        <input
-          type="text"
-          className="input-newLectur"
-          dir="rtl"
-          lang="Hebrew"
-        /> */}
 
         <div className="btns-newLec">
           <NavLink to="/admindashboard/lecturessection">
