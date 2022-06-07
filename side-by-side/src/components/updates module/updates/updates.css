@@ -3,6 +3,8 @@
     width: 100vw;
     display: flex;
     flex-direction: column; 
+
+
   
 
 }
@@ -55,8 +57,14 @@
 }
 
 .grid-container{
-    display: grid;
+    box-sizing: border-box;
+    display: flex;
     margin:0px 40px;
-    grid-template-columns: auto auto auto;
+    flex-wrap: wrap;
+
+    /* grid-template-columns: auto auto auto; */
+    justify-content: end;
+    align-items: end;
+    padding: 20px;
     
 }
