@@ -6,18 +6,23 @@ import "reactjs-popup/dist/index.css";
 import { IoIosTime } from "react-icons/io";
 
 function SingleTicket({
-  ticketNo,
+  ticketNumber,
   ticketStatus,
   ticketSubject,
   ticketTime,
   ticketReferral,
   ticketAnswer,
 }) {
+
+  console.log("ticetnumer: ",ticketNumber)
+
+
+
   return (
     <div className="newticket-card">
       <div className="singleticket-detail">
         <h2>מספר פניה</h2>
-        <p>{ticketNo} </p>
+        <p>{ticketNumber} </p>
       </div>
 
       <div className="singleticket-detail">
@@ -50,7 +55,7 @@ function SingleTicket({
               <div className="expand-header hdr">
                 <div className="single-line">
                   <h2>: מספר פניה</h2>
-                  <p>{ticketNo}</p>
+                  <p>{ticketNumber}</p>
                 </div>
                 <div className="single-line">
                   <h2>: נושא הפניה </h2>
@@ -58,7 +63,13 @@ function SingleTicket({
                 </div>
                 <div className="single-line">
                   <h2>: סטטוס</h2>
-                  <p className={`${( ticketStatus ==="closed" ) ?"status-exp" : "status-exp2"}`}>{ticketStatus}</p>
+                  <p
+                    className={`${
+                      ticketStatus === "closed" ? "status-exp" : "status-exp2"
+                    }`}
+                  >
+                    {ticketStatus}
+                  </p>
                 </div>
                 <div className="single-line">
                   <div className="timeExp expandTime">
@@ -77,15 +88,11 @@ function SingleTicket({
               <div className="description-expand">
                 <div className="sng-desc">
                   <h2>: מלל הפניה</h2>
-                  <p>
-                    {ticketReferral}
-                  </p>
+                  <p>{ticketReferral}</p>
                 </div>
                 <div className="sng-desc">
                   <h2>: תשובה</h2>
-                  <p>
-                    {ticketAnswer}
-                  </p>
+                  <p>{ticketAnswer}</p>
                 </div>
               </div>
               <button
