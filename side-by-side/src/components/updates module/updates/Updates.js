@@ -29,29 +29,26 @@ function Updates() {
     }));
     setUpdates(data);
   };
+  // console.log("tedslfklsdkf: ", updates);
+
+  const [searchWord, setSearchWord] = useState("");
 
   React.useEffect(() => {
     userData();
-  }, [trigger]);
+  }, [trigger, searchWord]);
 
   console.log(updates);
+  console.log(searchWord);
 
   function standardTime(unixtime) {
-    var u = new Date(unixtime * 1000);
+    var u = new Date(unixtime);
     return (
       u.getUTCFullYear() +
       "-" +
       ("0" + u.getUTCMonth()).slice(-2) +
       "-" +
       ("0" + u.getUTCDate()).slice(-2) +
-      " " +
-      ("0" + u.getUTCHours()).slice(-2) +
-      ":" +
-      ("0" + u.getUTCMinutes()).slice(-2) +
-      ":" +
-      ("0" + u.getUTCSeconds()).slice(-2) +
-      "." +
-      (u.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5)
+      (u.getUTCMilliseconds() / 1000).toFixed(0).slice(2, 5)
     );
   }
 
@@ -59,8 +56,8 @@ function Updates() {
     <div className="update-container">
       <div className="upper-portion">
         <div className="info">
-          <button id="btn-2">הצג הכל</button>
-          <div id="str-top">עדכונים אחרונים</div>
+          {/* <button id="btn-2">הצג הכל</button> */}
+          {/* <div id="str-top">עדכונים אחרונים</div> */}
         </div>
         <div className="input-parent">
           <input
@@ -68,15 +65,34 @@ function Updates() {
             className="input-box"
             dir="rtl"
             placeholder="הזין ערך לחיפוש"
+            onChange={(e) => setSearchWord(e.target.value)}
           />
           <BsSearch />
         </div>
       </div>
 
       <div className="grid-container">
-        {updates.map((update) => {
-          return <UpdateCard updateTopic={update.updateTopic} updateDescription={update.updateDescription} updateTime ={standardTime(update.updateTime)} />;
-        })}
+        {updates
+          .filter((value) => {
+            if (searchWord == "") {
+              return value;
+            } else if (
+              value.updateTopic
+                .toLowerCase()
+                .includes(searchWord.toLocaleLowerCase())
+            ) {
+              return value;
+            }
+          })
+          .map((update) => {
+            return (
+              <UpdateCard
+                updateTopic={update.updateTopic}
+                updateDescription={update.updateDescription}
+                updateTime={standardTime(update.updateTime)}
+              />
+            );
+          })}
       </div>
     </div>
   );
