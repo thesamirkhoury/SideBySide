@@ -12,6 +12,7 @@
   }
   .updateSection-header>button{
     margin-left: 50px;
+
   }
   .updateSection-header>h1{
     margin-right: 20px;
@@ -32,8 +33,22 @@
     border: none;
     cursor: pointer;
     margin-left: 50px;
+    font-family: "Assistant";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0.005em;
   }
+.del-btn , .confirm{
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
 
+}
 .updatessection-section{
   display: flex;
   flex-wrap: wrap;
