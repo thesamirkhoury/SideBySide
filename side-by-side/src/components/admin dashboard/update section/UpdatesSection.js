@@ -12,6 +12,8 @@ import {
   deleteDoc,
   collection,
 } from "firebase/firestore";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 function UpdatesSection() {
   const [trigger, setTrigger] = useState(false);
@@ -31,9 +33,7 @@ function UpdatesSection() {
 
   React.useEffect(() => {
     userData();
-  },[trigger]);
-
-  
+  }, [trigger, setTrigger]);
 
   return (
     <div className="update-sec">
@@ -59,23 +59,59 @@ function UpdatesSection() {
                 </div>
 
                 <div className="buttons-div">
-                  <button
-                    onClick={() => {
-                      let dataToupdate = doc(db, "adminUpdates", update.id);
-                      deleteDoc(dataToupdate)
-                        .then((res) => {
-                          // console.log("Approved", res);
-                          
-                          setTrigger(true);
-                        })
-                        .catch((err) => {
-                          console.log("ERROR", err);
-                        });
-                    }}
-                    className="del-btn"
+                  <Popup
+                    trigger={<button className="del-btn">מחק</button>}
+                    modal
                   >
-                    מחק
-                  </button>
+                    {(close) => (
+                      <div className="modal">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                        <div className="header"></div>
+                        <div className="content">
+                          <h3>are your sure to delete?</h3>
+                          <br />
+                          {trigger}
+
+                          <div className="cancel-confirm-btns">
+                            <button
+                              className="cancel"
+                              onClick={() => {
+                                console.log("modal closed ");
+                                close();
+                              }}
+                            >
+                              cancel
+                            </button>
+                            <button
+                              onClick={() => {
+                                let dataToupdate = doc(
+                                  db,
+                                  "adminUpdates",
+                                  update.id
+                                );
+                                deleteDoc(dataToupdate)
+                                  .then((res) => {
+                                    // console.log("Approved", res);
+
+                                    setTrigger(true);
+                                    close()
+                                  })
+                                  .catch((err) => {
+                                    console.log("ERROR", err);
+                                  });
+                              }}
+                              className="confirm"
+                            >
+                              confirm
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </Popup>
+
                   <Link to="/admindashboard/updateupdate" state={update}>
                     <button className="edit-btn">עדכן</button>
                   </Link>
