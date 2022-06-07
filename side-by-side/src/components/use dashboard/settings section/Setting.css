@@ -1,7 +1,7 @@
 .user-settings {
   display: flex;
   justify-content: flex-end;
-  background: #e5e5e5;
+  background: #e5e5e5 1 !important;
   flex-direction: column;
 }
 .user-settings > h1 {
@@ -15,7 +15,7 @@
 }
 
 .update-information {
-  width: 98%;
+  width: 72% !important;
   display: flex;
   justify-content: flex-end;
 }
