@@ -6,6 +6,9 @@
   padding: 0px 30px;
   margin: 0px 40px;
 }
+.grayBackeground{
+  background-color: #C4C4C4;
+}
 .div-child {
   display: flex;
   align-items: center;
@@ -61,6 +64,7 @@ a {
   color: #9a9ab0;
   margin-bottom: -20px;
   padding: 2px 5px;
+  text-align: right;
 }
 .desc > h4 {
   font-family: "Assistant";
@@ -70,6 +74,9 @@ a {
   line-height: 120%;
   letter-spacing: 0.005em;
   color: #11142d;
+}
+.desc >h4>span{
+  margin-right: 4px;
 }
 
 .profile>img{
