@@ -9,6 +9,8 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 import { db } from "../../../firebase/Firebase.config";
 
@@ -17,14 +19,14 @@ function Admins() {
   const [trigger, setTrigger] = useState(false);
 
   const AllAdmins = async () => {
-    const q = query(collection(db, "adminsList"));
+    const q = query(collection(db, "admin"));
     const querySnapshot = await getDocs(q);
     const data = querySnapshot.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id,
     }));
     setAdmins(data);
-    // console.log("All courses", data);
+    console.log("All admins", data);
   };
 
   useEffect(() => {
@@ -49,32 +51,64 @@ function Admins() {
             <th>שם ושם משפחה</th>
           </tr>
           {admins.map((admin) => {
-            return (
-              <tr>
-                <td className="repBtn">
-                  <button
-                    onClick={() => {
-                      let dataToupdate = doc(db, "adminsList", admins.id);
-                      deleteDoc(dataToupdate)
-                        .then((res) => {
-                          setTrigger(true);
-                          console.log('admin deleted...')
-                        })
-                        .catch((err) => {
-                          console.log("ERROR", err);
-                        });
-                    }}
-                    className="blockButton"
-                  >
-                    חסום
-                  </button>
-                </td>
-                <td>{admins.adminEmail}</td>
-                <td>{admins.adminPhonNumber}</td>
-                <td>{admins.adminLastName}</td>
-                <td>{admins.adminFirstName}</td>
-              </tr>
-            );
+            if (admin.isAdmin) {
+              return (
+                <tr>
+                  <td className="repBtn">
+                    <Popup
+                      trigger={<button className="blockButton">חסום</button>}
+                      modal
+                    >
+                      {(close) => (
+                        <div className="modal">
+                          <button className="close" onClick={close}>
+                            &times;
+                          </button>
+                          <div className="header"></div>
+                          <div className="content">
+                            <h3>are your sure to delete?</h3>
+                            <br />
+
+                            <div className="cancel-confirm-btns">
+                              <button
+                                className="cancel"
+                                onClick={() => {
+                                  console.log("modal closed ");
+                                  close();
+                                }}
+                              >
+                                cancel
+                              </button>
+                              <button
+                                onClick={() => {
+                                  let dataToupdate = doc(db, "admin", admin.id);
+                                  deleteDoc(dataToupdate)
+                                    .then((res) => {
+                                      setTrigger(true);
+                                      console.log("admin deleted...");
+                                    })
+                                    .catch((err) => {
+                                      console.log("ERROR", err);
+                                    });
+                                }}
+                                className="confirm"
+                              >
+                                confirm
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </Popup>
+                    
+                  </td>
+                  <td>{admin.email}</td>
+                  <td>{admin.phoneNumber}</td>
+                  <td>{admin.lastName}</td>
+                  <td>{admin.firstName}</td>
+                </tr>
+              );
+            }
           })}
         </table>
       </div>
