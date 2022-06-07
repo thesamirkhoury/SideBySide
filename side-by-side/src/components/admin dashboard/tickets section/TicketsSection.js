@@ -1,7 +1,48 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./TicketsSection.css";
+
+import {
+  collection,
+  query,
+  getDocs
+} from "firebase/firestore";
+
+import { db } from "../../../firebase/Firebase.config";
+
 function TicketsSection() {
+  const [tickets, setTickets] = useState([]);
+
+  const Alltickets = async () => {
+    const q = query(collection(db, "tickets"));
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    setTickets(data);
+  };
+
+  useEffect(() => {
+    Alltickets();
+  }, []);
+
+  function unixTime(unixtime) {
+    var u = new Date(unixtime * 1000);
+    return (
+      u.getUTCFullYear() +
+      "-" +
+      ("0" + u.getUTCMonth()).slice(-2) +
+      "-" +
+      ("0" + u.getUTCDate()).slice(-2) +
+     
+    
+      (u.getUTCMilliseconds() / 1000).toFixed().slice(2, 5)
+    );
+  }
+
+  // console.log("tickdwert: ", tickets)
+
   return (
     <div className="ticket-sectin">
       <h1>פניות אחרונות</h1>
@@ -14,50 +55,22 @@ function TicketsSection() {
             <th>שם מלא</th>
             <th>מספר פנייה</th>
           </tr>
-          <tr>
-            <td>
-              <NavLink to="/admindashboard/ticketssectin/reply">
-                <button className="replyButton">השב</button>
-              </NavLink>
-            </td>
-            <td>01/01/2022</td>
-            <td>לורם אפסם</td>
-            <td>ישראל ישראלי</td>
-            <td>1234</td>
-          </tr>
-          <tr>
-            <td>
-              <NavLink to="/admindashboard/ticketssectin/reply">
-                <button className="replyButton">השב</button>
-              </NavLink>
-            </td>
-            <td>01/01/2022</td>
-            <td>לורם אפסם</td>
-            <td>ישראל ישראלי</td>
-            <td>1234</td>
-          </tr>
-          <tr>
-            <td>
-              <NavLink to="/admindashboard/ticketssectin/reply">
-                <button className="replyButton">השב</button>
-              </NavLink>
-            </td>
-            <td>01/01/2022</td>
-            <td>לורם אפסם</td>
-            <td>ישראל ישראלי</td>
-            <td>1234</td>
-          </tr>
-          <tr>
-            <td>
-              <NavLink to="/admindashboard/ticketssectin/reply">
-                <button className="replyButton">השב</button>
-              </NavLink>
-            </td>
-            <td>01/01/2022</td>
-            <td>לורם אפסם</td>
-            <td>ישראל ישראלי</td>
-            <td>1234</td>
-          </tr>
+
+          {tickets.map((ticket) => {
+            return (
+              <tr>
+                <td>
+                  <Link to="/admindashboard/ticketssectin/reply" state={ticket}>
+                    <button className="replyButton">השב</button>
+                  </Link>
+                </td>
+                <td>{unixTime(ticket.ticketTime.date.seconds)}</td>
+                <td>{ticket.ticketSubject}</td>
+                <td>{ticket.userFirstName} {ticket.usreLastName}</td>
+                <td>{ticket.ticketNumber}</td>
+              </tr>
+            );
+          })}
         </table>
       </div>
     </div>
