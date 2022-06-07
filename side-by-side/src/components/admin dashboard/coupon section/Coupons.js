@@ -14,6 +14,9 @@ import {
 
 import { db } from "../../../firebase/Firebase.config";
 
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+
 function Coupons() {
   const [coupons, setCoupons] = useState([]);
   const [trigger, setTrigger] = useState(false);
@@ -27,13 +30,13 @@ function Coupons() {
     }));
     setCoupons(data);
   };
-
+  console.log("ksdjfkljs: ", coupons);
   useEffect(() => {
     AllCoupons();
-  }, [trigger]);
+  }, [trigger, setTrigger]);
 
   function unixTime(unixtime) {
-    var u = new Date(unixtime * 1000);
+    var u = new Date(unixtime );
     return (
       u.getUTCFullYear() +
       "-" +
@@ -46,16 +49,10 @@ function Coupons() {
       ("0" + u.getUTCMinutes()).slice(-2) +
       ":" +
       ("0" + u.getUTCSeconds()).slice(-2) +
-      "." +
-      (u.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5)
+      (u.getUTCMilliseconds() / 1000).toFixed(0).slice(2, 5)
     );
   }
 
-
-  const standardTime = (t) => {
-    var s = new Date(t).toLocaleDateString("en-US");
-    return s;
-  };
   return (
     <div className="coupon-sectin">
       <div className="couponSection-header">
@@ -82,26 +79,65 @@ function Coupons() {
 
                 <div className="singlecoupon-detail">
                   <h1>תוקף </h1>
-                  <p>{standardTime(coupon.couponValidity)}</p>
+                  <p>{unixTime(coupon.couponValidity)}</p>
                 </div>
                 <div className="coupon-btns">
-                  <button
-                    onClick={() => {
-                      let dataToupdate = doc(db, "coupons", coupon.id);
-                      deleteDoc(dataToupdate)
-                        .then((res) => {
-                          setTrigger(true);
-                          // console.log('coupon deleted...')
-                        })
-                        .catch((err) => {
-                          console.log("ERROR", err);
-                        });
-                    }}
-                    className="delt-btn-coupon"
+                  <Popup
+                    trigger={<button className="delt-btn-coupon">מחק</button>}
+                    modal
                   >
-                    מחק
-                  </button>
-                  <NavLink to="/admindashboard/couponsection/editcoupon" state={coupons}>
+                    {(close) => (
+                      <div className="modal">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                        <div className="header"></div>
+                        <div className="content">
+                          <h3>are your sure to delete?</h3>
+                          <br />
+
+                          <div className="cancel-confirm-btns">
+                            <button
+                              className="cancel"
+                              onClick={() => {
+                                console.log("modal closed ");
+                                close();
+                              }}
+                            >
+                              cancel
+                            </button>
+                            <button
+                              onClick={() => {
+                                let dataToupdate = doc(
+                                  db,
+                                  "coupons",
+                                  coupon.id
+                                );
+                                deleteDoc(dataToupdate)
+                                  .then((res) => {
+                                    setTrigger(true);
+                                    close();
+
+                                    // console.log('coupon deleted...')
+                                  })
+                                  .catch((err) => {
+                                    console.log("ERROR", err);
+                                  });
+                              }}
+                              className="confirm"
+                            >
+                              confirm
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </Popup>
+
+                  <NavLink
+                    to="/admindashboard/couponsection/editcoupon"
+                    state={coupon}
+                  >
                     <button className="edit-btn-coupon">עדכן</button>
                   </NavLink>
                 </div>
