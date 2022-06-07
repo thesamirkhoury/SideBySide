@@ -14,9 +14,9 @@ import { db } from "../../../firebase/Firebase.config";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
-
 function Courses() {
   const [courses, setCourses] = useState([]);
+  const [trigger, setTrigger] = useState(false);
 
   const AllCourses = async () => {
     const q = query(collection(db, "courses"));
@@ -26,12 +26,31 @@ function Courses() {
       id: doc.id,
     }));
     setCourses(data);
-    // console.log("All courses", data);
   };
+
+  console.log("All coursesddd", courses);
+
+  const [users, setUsers] = useState([]);
+
+  const AllUsers = async () => {
+    const q = query(collection(db, "admin"));
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+
+    const userdata = data.filter((dat) => dat.email == cUser.email);
+    //  console.log("USERDATA",userdata)
+
+    setUsers(userdata);
+  };
+  // console.log("userssss: ", users)
 
   useEffect(() => {
     AllCourses();
-  }, []);
+    AllUsers();
+  }, [trigger]);
 
   function unixTime(unixtime) {
     var u = new Date(unixtime * 1000);
@@ -42,22 +61,24 @@ function Courses() {
       "-" +
       ("0" + u.getUTCDate()).slice(-2) +
       " " +
-      ("0" + u.getUTCHours()).slice(-2) +
-      ":" +
-      ("0" + u.getUTCMinutes()).slice(-2) +
-      ":" +
-      ("0" + u.getUTCSeconds()).slice(-2) +
-      "." +
-      (u.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5)
+      (u.getUTCMilliseconds() / 1000).toFixed(0).slice(2, 5)
     );
   }
+  const cUser = JSON.parse(localStorage.getItem("currentUser"));
+  // console.log("cUser: ", cUser)
 
   return (
     <div className="courses-component">
       <h1>סדנאות פתוחות להרשמה</h1>
       <div className="courses-section">
         {courses.map((singlecourse) => {
-          if (!singlecourse.isRegistered) {
+          // console.log("Cousr;;;;;;: ", singlecourse?.registeredUsers);
+          if (
+            singlecourse.registeredUsers?.filter(
+              (dat) => dat.email == cUser.email
+            ).length == 0 ||
+            singlecourse.isRegistered == false
+          ) {
             return (
               <div className="course-card">
                 <div className="single-detail">
@@ -72,33 +93,38 @@ function Courses() {
 
                 <div className="single-detail">
                   <h1>תאריך וזמן</h1>
-                  <p> {unixTime(singlecourse.courseTime)}</p>
+                  <p> {singlecourse.courseTime}</p>
                 </div>
 
                 <div className="single-detail">
                   <h1>עלות השתתפות </h1>
                   <p>{singlecourse.courseCost} ₪</p>
                 </div>
-                <NavLink to="/userdashboard/lectures/registerlecture">
-                  <button
-                    onClick={() => {
-                      let dataToupdate = doc(db, "courses", singlecourse.id);
-                      updateDoc(dataToupdate, {
-                        isRegistered: true,
+                {/* <NavLink to="/userdashboard/lectures/registerlecture"> */}
+                <button
+                  onClick={() => {
+                    let dataToupdate = doc(db, "courses", singlecourse.id);
+                    updateDoc(dataToupdate, {
+                      registeredUsers: [
+                        ...singlecourse.registeredUsers,
+                        ...users,
+                      ],
+                      isRegistered: true,
+                    })
+                      .then((res) => {
+                        console.log("Registered", res);
+
+                        setTrigger(true);
                       })
-                        .then((res) => {
-                          console.log("Registered", res);
-                          // setTrigger(true);
-                        })
-                        .catch((err) => {
-                          console.log("ERROR", err);
-                        });
-                    }}
-                    className="reg-btn"
-                  >
-                    הרשם
-                  </button>
-                </NavLink>
+                      .catch((err) => {
+                        console.log("ERROR", err);
+                      });
+                  }}
+                  className="reg-btn"
+                >
+                  הרשם
+                </button>
+                {/* </NavLink> */}
               </div>
             );
           }
@@ -107,31 +133,36 @@ function Courses() {
       <h1>סדנאות אליהם נרשמתם</h1>
       <div className="courses-section">
         {courses.map((singlecourse) => {
-          if (singlecourse.isRegistered) {
+          if (
+            singlecourse.registeredUsers?.filter(
+              (dat) => dat.email == cUser.email
+            ).length >= 1 &&
+            singlecourse.isRegistered == true
+          ) {
             return (
               <div className="course-card">
                 <div className="single-detail">
                   <h1>שם סדנא</h1>
-                  <p>לורם איפשסום </p>
+                  <p>{singlecourse.courseName}</p>
                 </div>
 
                 <div className="single-detail">
                   <h1>מיקום הסדנא</h1>
-                  <p>לורם איפסום דולור סיט אמט</p>
+                  <p>{singlecourse.courseLocation}</p>
                 </div>
 
                 <div className="single-detail">
                   <h1>תאריך וזמן</h1>
-                  <p> 13:00 11.04.2022</p>
+                  <p> {singlecourse.courseTime}</p>
                 </div>
 
                 <div className="single-detail">
                   <h1>עלות השתתפות </h1>
-                  <p>0.00 ₪</p>
+                  <p>{singlecourse.courseCost} ₪</p>
                 </div>
-
+  
                 <Popup
-                  trigger={<button className="dl-btn">מחקda</button>}
+                  trigger={<button className="dl-btn">ביטול</button>}
                   modal
                   nested
                 >
@@ -165,12 +196,12 @@ function Courses() {
                                 "courses",
                                 singlecourse.id
                               );
-                              deleteDoc(dataToupdate, {
-                                isRegistered: true,
+                              updateDoc(dataToupdate, {
+                                isRegistered: false,
                               })
                                 .then((res) => {
-                                  console.log("deleted");
-                                  // setTrigger(true);
+                                  console.log("UPdate", res);
+                                  setTrigger(trigger? false: true);
                                   close();
                                 })
                                 .catch((err) => {
