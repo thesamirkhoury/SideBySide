@@ -4,119 +4,202 @@ import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase/Firebase.config";
 
 import { storage } from "../../../firebase/Firebase.config";
-import { doc, setDoc, addDoc } from "firebase/firestore";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  listAll,
-  list,
-} from "firebase/storage";
-import { async } from "@firebase/util";
+import { doc, setDoc, addDoc, updateDoc } from "firebase/firestore";
+import { where } from "firebase/firestore";
+import {useUserContext}  from '../../context/UseContext'
+
 
 function Settings() {
+  const [userdetails, setUserDetails] = useState([]);
+  const [currentID, setcurrentID] = useState();
 
-  const onChange1 = (e) => {
-    // e.defaultPrevent();
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+  const loggeInUserDate = async () => {
+    const id = JSON.parse(localStorage.getItem("currentUser"));
+    const q = query(collection(db, "admin"), where("email", "==", id.email));
 
-  const [details, setDetails] = useState([]);
-
-  const userData = async () => {
-    const q = query(collection(db, "admin"));
     const querySnapshot = await getDocs(q);
-    const data = querySnapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-    setDetails(data);
-    console.log("All users", data);
+
+    querySnapshot.forEach((doc) => {
+      setcurrentID(doc.id);
+      const uData = doc.data();
+      setUserDetails(uData);
+    });
   };
 
   useEffect(() => {
-    userData();
+    loggeInUserDate();
   }, []);
 
-  // const [currentUsr, setCurrentUser] = useState({});
+  const onChange1 = (e) => {
+    setUserDetails({ ...userdetails, [e.target.name]: e.target.value });
+  };
 
-  // const curntUser = async () => {
-  //   const curntUsrId = JSON.parse(localStorage.getItem("currentUser"));   
-  //   await details.map((detail) => {
-  //     if(detail.email === curntUsrId.email){
-  //        setCurrentUser(()=>detail)
-  //     }
-  //     // console.log(detail.email)   
-  //   });
-  //   console.log(currentUsr)
-  // };
+  const handleSubmit = async () => {
+    const cId = JSON.parse(localStorage.getItem("currentUser"));
 
-  // curntUser();
+    let dataToupdate = doc(db, "admin", currentID);
+    updateDoc(dataToupdate, {
+      firstName: userdetails.firstName,
+      lastName: userdetails.lastName,
+      city: userdetails.city,
+      dateOfBirth: userdetails.dateOfBirth,
+      email: userdetails.email,
+      phoneNumber: userdetails.phoneNumber,
+      maritalStatus: userdetails.maritalStatus,
+      password: userdetails.password,
+      numberOfChildren: userdetails.numberOfChildren,
+      isApproved: true,
+      password: userdetails.password,
+    })
+      .then((res) => {
+        console.log("user details updated..", res);
+      })
+      .catch((err) => {
+        console.log("ERROR", err);
+      });
+  };
 
 
 
-  const [user, setUser] = useState({
-    firstName:details.firstName,
-    lastName: details.lastName,
-    city: details.city,
-    dateOfBirth: details.dateOfBirth,
-    email: details.email,
-    phoneNumber: details.phoneNumber,
-    maritalStatus: details.maritalStatus,
-    password: "",
-    numberOfChildren: details.numberOfChildren,
-    isApproved: false,
-  });
+
+  
+  const handleSubmit1 = (e) => {
+    console.log(email);
+    e.preventDefault();
+    forgotPassword(email)
+      .then(() => {
+        // setNotify(true);
+        // setResetPass("password reset link has been sent to your email!");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // setResetPass( "Sorry. Wrong email!");
+      });
+  };
+
+  const { forgotPassword, setResetPass, resetPass } = useUserContext();
+
+  const [email, setEmail] = React.useState("");
 
   return (
     <div className="user-settings">
       <h1>רוצה לעדכן פרטים? תרגיש חופשי</h1>
-
       <div className="update-information">
         <div className="updateInfo-container">
-          <div className="singleLine-input">
-            <div className="input-box">
-              <input type="text" dir="rtl" value={details.firstName}/>
-              <label>שם משפחה</label>
+          <div className="singleLine-inputs">
+            <div className="input-boxR">
+              <input
+                onChange={onChange1}
+                id="lastName"
+                name="lastName"
+                dir="rtl"
+                type="text"
+                placeholder={userdetails.firstName}
+              />
+              <label for="firstName">:שם משפחה</label>
             </div>
-            <div className="input-box">
-              <input id="name" value={details.lastName} type="text" dir="rtl" />
-              <label for="name" >שם פרטי</label>
-            </div>
-          </div>
-          <div className="singleLine-input">
-            <div className="input-box">
-              <input type="text" dir="rtl" />
-              <label>עיר מגורים</label>
-            </div>
-            <div className="input-box">
-              <input id="name" type="text" dir="rtl" />
-              <label for="name">תאריך לידה </label>
-            </div>
-          </div>
-          <div className="singleLine-input">
-            <div className="input-box">
-              <input type="text" dir="rtl" />
-              <label>מספר טלפון</label>
-            </div>
-            <div className="input-box">
-              <input id="name" type="text" dir="rtl" />
-              <label for="name">מייל</label>
+            <div className="input-boxR">
+              <input
+                onChange={onChange1}
+                id="firstName"
+                type="text"
+                name="firstName"
+                placeholder={userdetails.lastName}
+                dir="rtl"
+              />
+              <label for="lastName">שם פרטי</label>
             </div>
           </div>
-          <div className="singleLine-input">
-            <div className="input-box">
-              <input type="text" dir="rtl" />
-              <label>מספר ילדים</label>
+
+          <div className="singleLine-inputs">
+            <div className="input-boxR">
+              <select
+                onChange={onChange1}
+                dir="rtl"
+                placeholder={userdetails.city}
+                name="city"
+                id="city"
+              >
+                <option selected value="city1">city1</option>
+                <option value="city2">city2</option>
+                <option value="city3">city3</option>
+              </select>
+              <label for="city">: עיר מגורים </label>
             </div>
-            <div className="input-box">
-              <input id="name" type="text" dir="rtl" />
-              <label for="name">מצב משפחתי</label>
+
+            <div className="input-boxR">
+              <input
+                onChange={onChange1}
+                name="dateOfBirth"
+                id="dateOfBirth"
+                type="date"
+                dir="rtl"
+                placeholder={userdetails.dateOfBirth}
+                
+               />
+              <label for="dateOfBirth">:תאריך לידה</label>
+            </div>
+          </div>
+
+          <div className="singleLine-inputs">
+            <div className="input-boxR">
+              <input
+                onChange={onChange1}
+                name="phoneNumber"
+                id="phoneNumber"
+                type="number"
+                dir="rtl"
+                placeholder={userdetails.phoneNumber}
+              />
+              <label for="email">:מספר טלפון</label>
+            </div>
+            <div className="input-boxR">
+              <input
+                onChange={onChange1}
+                name="email"
+                id="email"
+                type="email"
+                dir="rtl"
+                placeholder={userdetails.email}
+              />
+
+              <label for="phoneNumber">:מייל</label>
+            </div>
+          </div>
+          <div className="singleLine-inputs">
+            <div className="input-boxR">
+              <input
+                onChange={onChange1}
+                id="children"
+                name="numberOfChildren"
+                dir="rtl"
+                type="number"
+                placeholder={userdetails.numberOfChildren}
+              />
+              <label for="children">:מספר ילדים</label>
+            </div>
+
+            <div className="input-boxR">
+              <select
+                onChange={onChange1}
+                dir="rtl"
+                name="maritalStatus"
+                id="maritalStatus"
+                placeholder={userdetails.maritalStatus}
+              >
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+              </select>
+
+              <label for="maritalStatus">:סיסמה</label>
             </div>
           </div>
 
           <div className="saveInfoBtn">
-            <button className="saveInfoBtn-1R">שמור</button>
+            <button onClick={handleSubmit} className="saveInfoBtn-1R">
+              שמור
+            </button>
           </div>
         </div>
       </div>
@@ -125,28 +208,32 @@ function Settings() {
         <div className="password-container">
           <h1>רוצה לשנות סיסמה? בוא נצא לדרך</h1>
 
-          <div className="singleLine-inputPassword">
-            <div className="input-boxPassword">
-              <input id="name" type="password" dir="rtl" />
-              <label for="name">הסיסמה הישנה</label>
+          <form onSubmit={handleSubmit1}>
+            <div className="input-reset">
+              <label>:מייל</label>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                dir="rtl"
+                className="input-pass"
+              />
             </div>
-          </div>
-          <div className="singleLine-inputPassword">
-            <div className="input-boxPassword">
-              <input id="name" type="password" dir="rtl" />
-              <label for="name">הסיסמה החדשה</label>
-            </div>
-          </div>
-          <div className="singleLine-inputPassword">
-            <div className="input-boxPassword">
-              <input id="name" type="password" dir="rtl" />
-              <label for="name">הסיסמה החדשה שוב</label>
-            </div>
-          </div>
 
-          <div className="passSave">
-            <button className="passSaveBtn">שמור</button>
-          </div>
+
+            <button
+              // onClick={ handleSubmit}
+              type="submit"
+              className="resetPassButton"
+            >
+              אפסו לי את הסיסמה{" "}
+            </button>
+
+          </form>
+            {resetPass}
+
+         
+
+       
         </div>
       </div>
     </div>
