@@ -10,13 +10,16 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
+
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db, auth } from "../../../firebase/Firebase.config";
 import { useUserContext } from "../../context/UseContext";
 
 function UsersSection() {
   const [details, setDetails] = useState([]);
-  const[trigger, setTrigger] = useState(false)
+  const [trigger, setTrigger] = useState(false);
   const { registerUser } = useUserContext();
   const userData = async () => {
     const q = query(collection(db, "admin"));
@@ -32,7 +35,7 @@ function UsersSection() {
 
   useEffect(() => {
     userData();
-  }, [[],setTrigger]);
+  }, [[], setTrigger]);
 
   return (
     <div className="user-sectin">
@@ -48,11 +51,10 @@ function UsersSection() {
           </tr>
 
           {details.map((singleUserDetails) => {
-            if (!singleUserDetails.isApproved) {
+            if (!singleUserDetails.isApproved && !singleUserDetails.isAmdin) {
               return (
                 <tr>
                   <td className="repBn">
-                   
                     <button
                       onClick={() => {
                         registerUser(
@@ -69,8 +71,8 @@ function UsersSection() {
                           isApproved: true,
                         })
                           .then((res) => {
-                            console.log("UPdate",res)
-                            setTrigger(true)
+                            console.log("UPdate", res);
+                            setTrigger(true);
                           })
                           .catch((err) => {
                             console.log("ERROR", err);
@@ -106,33 +108,62 @@ function UsersSection() {
           </tr>
 
           {details.map((singleUserDetails) => {
-            if (singleUserDetails.isApproved) {
+            if (singleUserDetails.isApproved && !singleUserDetails.isAdmin) {
               return (
                 <tr>
                   <td className="repBn">
-                    <button
-                      onClick={() => {
-                        let dataToupdate = doc(
-                          db,
-                          "admin",
-                          singleUserDetails.id
-                        );
-                        deleteDoc(dataToupdate, {
-                          isApproved: true,
-                        })
-                          .then((res) => {
-                            console.log("Approved", res);
-                            setTrigger(true)
-
-                          })
-                          .catch((err) => {
-                            console.log("ERROR", err);
-                          });
-                      }}
-                      className="blockButton"
+                    <Popup
+                      trigger={<button className="blockButton">חסום</button>}
+                      modal
                     >
-                      חסום
-                    </button>
+                      {(close) => (
+                        <div className="modal">
+                          <button className="close" onClick={close}>
+                            &times;
+                          </button>
+                          <div className="header"></div>
+                          <div className="content">
+                            <h3>are your sure to delete?</h3>
+                            <br />
+
+                            <div className="cancel-confirm-btns">
+                              <button
+                                className="cancel"
+                                onClick={() => {
+                                  console.log("modal closed ");
+                                  close();
+                                }}
+                              >
+                                cancel
+                              </button>
+                              <button
+                                onClick={() => {
+                                  let dataToupdate = doc(
+                                    db,
+                                    "admin",
+                                    singleUserDetails.id
+                                  );
+                                  deleteDoc(dataToupdate, {
+                                    isApproved: true,
+                                  })
+                                    .then((res) => {
+                                      console.log("Approved", res);
+                                      setTrigger(true);
+                                      close();
+                                    })
+                                    .catch((err) => {
+                                      console.log("ERROR", err);
+                                    });
+                                }}
+                                className="confirm"
+                              >
+                                confirm
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </Popup>
                   </td>
                   <td>{singleUserDetails.city}</td>
                   <td>{singleUserDetails.numberOfChildren}</td>
