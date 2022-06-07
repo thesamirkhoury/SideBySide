@@ -1,7 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Reply.css";
+import { useLocation } from "react-router-dom";
+
+import { updateDoc, doc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { db } from "../../../firebase/Firebase.config";
+import {location } from 'react-router-dom'
 function Reply() {
+
+  const location = useLocation();
+  console.log("stat: ", location)
+
+  
+
+  function unixTime(unixtime) {
+    var u = new Date(unixtime * 1000);
+    return (
+      u.getUTCFullYear() +
+      "-" +
+      ("0" + u.getUTCMonth()).slice(-2) +
+      "-" +
+      ("0" + u.getUTCDate()).slice(-2) +
+      " " +
+      ("0" + u.getUTCHours()).slice(-2) +
+      ":" +
+      ("0" + u.getUTCMinutes()).slice(-2) +
+      ":" +
+      ("0" + u.getUTCSeconds()).slice(-2) +
+      "." +
+      (u.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5)
+    );
+  }
+
+  const [ans, setAns] = useState("");
+
+  function handleSubmit() {
+    let dataToupdate = doc(db, "tickets", location.state.id);
+    updateDoc(dataToupdate, {
+      ticketAnswer: ans,
+      ticketStatus:'closed'
+    })
+      .then((res) => {
+        console.log("UPdate", res);
+      })
+      .catch((err) => {
+        console.log("ERROR", err);
+      });
+  }
+
   return (
     <div className="reply-component">
       <h1>השב לפנייה</h1>
@@ -14,29 +61,32 @@ function Reply() {
       />
       <div className="singleLin">
         <h2>:מספר פניה</h2>
-        <p>12345</p>
+        <p>{location.state.ticketNumber}</p>
       </div>
 
       <div className="singleLin">
         <h2>:נושא הפניה</h2>
-        <p>לורם איפסום דולור סיט אמט</p>
+        <p>{location.state.ticketSubject}</p>
       </div>
       <div className="singleLin">
         <h2>:תאריך פתיחה</h2>
-        <p>16-04-2022</p>
+        <p>{unixTime(location.state.ticketTime.date.seconds)}</p>
       </div>
       <div className="singleLin col">
         <h2>:מלל הפניה</h2>
-        <p>
-          לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט
-          דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ
-          בעריר גק ליץ, ושבעגט. קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח.
-          עמחליף לורם איפסום דולור סיט אמט, מוסן מנת.
-        </p>
+        <p>{location.state.ticketReferral}</p>
       </div>
       <div className="singleLin col">
         <h2>:תשובה</h2>
-        <textarea id="w3review" name="w3review" rows="8" dir="rtl" cols="100" />
+        <textarea
+          onChange={(e) => setAns(e.target.value)}
+          id="w3review"
+          name="w3review"
+          rows="8"
+          dir="rtl"
+          cols="100"
+          placeholder={location.state.ticketAnswer}
+        />
       </div>
 
       <div className="replyBtns">
@@ -44,7 +94,9 @@ function Reply() {
           <button className="cancelB">ביטול</button>
         </NavLink>
         <NavLink to="/admindashboard/ticketssectin">
-          <button className="sendB">שלח</button>
+          <button onClick={handleSubmit} className="sendB">
+            שלח
+          </button>
         </NavLink>
       </div>
     </div>
