@@ -22,6 +22,7 @@ function EditCoupon() {
     setCoupon({ ...coupon, [e.target.name]: e.target.value });
   };
 
+  // console.log("location stat: ", location.state)
   const handleSubmit = async () => {
     try {
       const docRef = updateDoc(doc(db, "coupons", location.state.id), {
@@ -95,13 +96,14 @@ function EditCoupon() {
         name="couponCode"
         dir="rtl"
         lang="Hebrew"
+        placeholder={coupon.couponCode}
       />
 
       <div className="btns-newCop">
         <NavLink to="/admindashboard/couponsection">
           <button className="newCop-btn-cancel">ביטול</button>
         </NavLink>
-        <NavLink to="/admindashboard/couponsection/editcoupon">
+        <NavLink to="/admindashboard/couponsection">
           <button onClick={handleSubmit} className="newCop-btn">
             פרסם
           </button>
