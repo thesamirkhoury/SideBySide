@@ -4,6 +4,11 @@ import "./Tickets.css";
 import searchicon from "../assests/search-icon.svg";
 import plus from "../assests/newticket.svg";
 import { NavLink } from "react-router-dom";
+import expand from "../assests/expand.svg";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import {useUserContext }from '../../context/UseContext'
+import { IoIosTime } from "react-icons/io";
 import {
   collection,
   query,
@@ -14,28 +19,64 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../../../firebase/Firebase.config";
+import { async } from "@firebase/util";
 
 function Tickets() {
-  const [tickets, setTickets] = useState([]);
+ 
+  const [ticketdata, setTicketData] = useState([]);
+const {ticketTrigger, setTicketTrigger,tickets,setTickets} = useUserContext();
+  const loggedUser = JSON.parse(localStorage.getItem("currentUser"));
+  const loggedUserEmail1 = loggedUser.email;
 
-  const Alltickets = async () => {
-    const q = query(collection(db, "tickets"));
-    const querySnapshot = await getDocs(q);
-    const data = querySnapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-    setTickets(data);
-    console.log("All Tickets", data);
-  };
+  const regUsrz = [{}];
+
+  
+  // setTickets(()=>[regUsrz])
 
   useEffect(() => {
+    // console.log("Triggered")
+    const Alltickets = async () => {
+ 
+      const q = query(collection(db, "tickets"));
+      const querySnapshot = await getDocs(q);
+      const data = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      // console.log("All tickets", data);
+     const arr = [];
+      data.map((dat) => {
+        if (dat.userCreated.loggedUserEmail == loggedUserEmail1 && dat.userCreated.loggedUserEmail != null) {
+          // console.log("data to be added",dat)
+        
+        arr.push(dat);
+          //  setTicketData([dat])
+  
+          // regUsrz.push(dat);
+        }
+      }
+      
+      );
+    
+      console.log("ARR",arr)
+      setTickets([...arr])
+    
+
+
+  
+      
+      // setTickets(regUsrz);
+     
+    };
     Alltickets();
-  }, []);
+    console.log("Ticket data",tickets)
+ 
+ 
+  }, [setTickets]);
 
   function unixTime(unixtime) {
     var theDate = new Date(unixtime * 1000);
-    return  theDate.toLocaleDateString();
+    return theDate.toLocaleDateString();
   }
 
   return (
@@ -54,15 +95,17 @@ function Tickets() {
         <h1>פניות אחרונות</h1>
       </div>
       <div className="singletickets-section">
-        {tickets.map((ticket) => {
+        {tickets?.map((ticket) => {
+          // console.log("TICKETS",tickets)
+
           return (
             <SingleTicket
-              ticketNo={ticket.ticketNumber}
               ticketStatus={ticket.ticketStatus}
               ticketSubject={ticket.ticketSubject}
-              ticketTime={unixTime(ticket.ticketTime)}
               ticketReferral={ticket.ticketReferral}
               ticketAnswer={ticket.ticketAnswer}
+              ticketTime={unixTime(ticket.ticketTime.date.seconds)}
+              ticketNumber={ticket.ticketNumber}
             />
           );
         })}
