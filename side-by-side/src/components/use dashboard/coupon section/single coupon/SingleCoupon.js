@@ -49,7 +49,6 @@ function SingleCoupon({
               })
                 .then((res) => {
                   console.log("Approved", res);
-                  // setTrigger(true);
                 })
                 .catch((err) => {
                   console.log("ERROR", err);

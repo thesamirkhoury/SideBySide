@@ -24,7 +24,6 @@ function UpdatesSection() {
 
     const querySnapshot = await getDocs(q);
     const data = querySnapshot.docs.map((doc) => ({
-      // doc.data() is never undefined for query doc snapshots
       ...doc.data(),
       id: doc.id,
     }));
@@ -93,8 +92,6 @@ function UpdatesSection() {
                                 );
                                 deleteDoc(dataToupdate)
                                   .then((res) => {
-                                    // console.log("Approved", res);
-
                                     setTrigger(true);
                                     close()
                                   })
