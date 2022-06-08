@@ -14,7 +14,7 @@ function Homepage() {
 
       <div className="content-side">
         <h1> החממה </h1>
-        <p>קהילה תומכת דיגיטלית. </p>
+        <h2>קהילה תומכת דיגיטלית</h2>
         <NavLink to="/login">
           <button className="home-login"> התחבר לאזור האישי</button>
         </NavLink>
