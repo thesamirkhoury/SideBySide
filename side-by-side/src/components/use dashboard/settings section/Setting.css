@@ -15,7 +15,7 @@
 }
 
 .update-information {
-  width: 72% !important;
+  width: 75% !important;
   display: flex;
   justify-content: flex-end;
 }
@@ -41,6 +41,7 @@
   text-align: right;
   color: #000000;
 }
+
 .input-boxPassword {
   width: 100%;
 }
@@ -54,9 +55,9 @@
   height: 35px;
   padding: 2px 10px;
 }
-.input-boxPassword > label {
+/* .input-boxPassword > label {
   width: 30%;
-}
+} */
 
 .updateInfo-container {
   width: 100%;

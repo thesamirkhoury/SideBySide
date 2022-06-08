@@ -113,9 +113,10 @@ function Settings() {
                 name="city"
                 id="city"
               >
-                <option value="city1">city1</option>
-                <option value="city2">city2</option>
-                <option value="city3">city3</option>
+                <option  value="ירושלים והסביבה">ירושלים והסביבה</option>
+                <option value="תל אביב-יפו">תל אביב-יפו</option>
+                <option value="באר שבע רבתי">באר שבע רבתי</option>
+                <option value="חיפה והצפון">חיפה והצפון</option>
               </select>
               <label for="city">: עיר מגורים </label>
             </div>
@@ -179,11 +180,11 @@ function Settings() {
                 id="maritalStatus"
                 placeholder={userdetails.maritalStatus}
               >
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
+                <option value="רווק">רווק</option>
+                <option value="נשוי">נשוי</option>
               </select>
 
-              <label for="maritalStatus">:סיסמה</label>
+              <label for="maritalStatus">:מצב משפחתי</label>
             </div>
           </div>
 

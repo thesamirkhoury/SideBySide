@@ -135,10 +135,12 @@ function NewAdmin() {
                 onChange={onChange2}
                 dir="rtl"
                 id="city"
-              >
-                <option value="city1">Islamabad</option>
-                <option value="city2">Lahore</option>
-                <option value="city3">Quetta</option>
+              >  
+              <option>בחר עיר</option>
+              <option  value="ירושלים והסביבה">ירושלים והסביבה</option>
+              <option value="תל אביב-יפו">תל אביב-יפו</option>
+              <option value="באר שבע רבתי">באר שבע רבתי</option>
+               <option value="חיפה והצפון">חיפה והצפון</option>
               </select>
             </div>
           </div>
