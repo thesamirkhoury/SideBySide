@@ -5,7 +5,7 @@ import Homepage from "./components/homepage/Homepage";
 import Navbar from "./components/navbar/Navbar";
 import UserRegister from "./components/auth module/register/Register";
 import UserLogin from "./components/auth module/login/Login";
-import ForgotPassword from "./components/auth module/password reset/PasswordReset";
+import ForgotPassword from './components/auth module/password reset/PasswordReset';
 import Update from "./components/updates module/updates/Updates";
 import ExpandUpdate from "./components/updates module/update expand/UpdateExpand";
 import About from "./components/about/About";
@@ -46,6 +46,7 @@ import EditBlog from "./components/admin dashboard/new post/EditBlog";
 import RegisteredUsers from "./components/admin dashboard/registered users list/RegisteredUsers";
 import EditeLecture from './components/admin dashboard/new lecture/EditeLecture'
 import EditCoupon from "./components/admin dashboard/new coupon/EditCoupon";
+import PasswordReset from "./components/auth module/password reset/PasswordReset";
 // User dashboard components
 
 function App() {
@@ -67,7 +68,7 @@ function App() {
             <Route exact path="/" element={<Homepage />} />
             <Route exact path="/userregister" element={<UserRegister />} />
             <Route exact path="/login" element={<UserLogin />} />
-            <Route exact path="/forgotpassword" element={<ForgotPassword />} />
+            <Route exact path ='/resetpassword' element ={<PasswordReset />} />
             <Route exact path="/updates" element={<Update />} />
             <Route
               exact
@@ -208,8 +209,8 @@ function App() {
         </div>
 
         <div className="sidebar-component">
-          {userLogged ? <Sidebar /> : ""}
-          {adminLogged ? <AdminSidebar setAdminLogged={setAdminLogged} /> : ""}
+          {userLogged ? <Sidebar /> : adminLogged?<AdminSidebar setAdminLogged={setAdminLogged} />:null}
+          
         </div>
       </div>
     </Router>
