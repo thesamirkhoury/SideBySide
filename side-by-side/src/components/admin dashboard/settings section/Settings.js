@@ -180,8 +180,10 @@ function Settings() {
                 id="maritalStatus"
                 placeholder={userdetails.maritalStatus}
               >
-                <option value="רווק">רווק</option>
-                <option value="נשוי">נשוי</option>
+              <option value="רווק.ה">רווק.ה</option>
+              <option value="נשואים">נשואים</option>
+              <option value="גרוש.ה">גרוש.ה</option>
+              <option value="אחר">אחר</option>
               </select>
 
               <label for="maritalStatus">:מצב משפחתי</label>

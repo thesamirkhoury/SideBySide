@@ -26,7 +26,7 @@ function UpdateCard({updateTopic,updateDescription,updateTime}) {
       </div>
       <Link state={{updateTime, updateTopic, updateDescription}} to="/updates/expandupdate">
         <button id="btn-1">
-          הרחיב תצוגה <CgArrowsExpandLeft style={{ marginLeft: "6px" }} />
+          לפרטים נוספים <CgArrowsExpandLeft style={{ marginLeft: "6px" }} />
         </button>
       </Link>
     </div>

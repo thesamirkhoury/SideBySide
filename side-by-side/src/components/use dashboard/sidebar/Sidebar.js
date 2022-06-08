@@ -93,7 +93,7 @@ function Sidebar() {
             </p>
             <img
               src={setImgFilled ? SettingFilled : Setting}
-              // className={imgColor}
+
               alt="icon"
               height="43"
               width="32"

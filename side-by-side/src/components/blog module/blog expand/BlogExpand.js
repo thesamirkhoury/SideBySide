@@ -38,7 +38,7 @@ function UpdateExpand() {
       <br/>
       <NavLink to="/blogs">
         <div className="bExp-btn">
-          <button className="expandExp">סגור חלון</button>
+          <button className="expandExp">לסגירת חלון</button>
           <img src={expand} alt="expandExp" />
         </div>
       </NavLink>

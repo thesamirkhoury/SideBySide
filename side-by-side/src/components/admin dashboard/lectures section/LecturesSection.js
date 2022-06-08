@@ -52,7 +52,7 @@ function LecturesSection() {
     <div className="lecture-section">
       <div className="lectureSection-header">
         <NavLink to="/admindashboard/newlecture">
-          <button className="newPost-button">סדנא חדשה</button>
+          <button className="newPost-button">סדנה חדשה</button>
         </NavLink>
         <h1>סדנאות קיימות</h1>
       </div>
@@ -62,12 +62,12 @@ function LecturesSection() {
           return (
             <div className="lecture-card">
               <div className="single-lecture-detail">
-                <h1 style={{ marginBottom: "-13px" }}>שם סדנא</h1>
+                <h1 style={{ marginBottom: "-13px" }}>שם סדנה</h1>
                 <p>{course.courseName} </p>
               </div>
 
               <div className="singleL-detail">
-                <h1>מיקום הסדנא</h1>
+                <h1>מיקום הסדנה</h1>
                 <p>{course.courseLocation}</p>
               </div>
               <div className="singleL-detail">
@@ -89,28 +89,28 @@ function LecturesSection() {
                       <button className="close" onClick={close}>
                         &times;
                       </button>
+                      <h1 style={{textAlign: "center"}}>אישור מחיקה</h1>
                       <div className="header"></div>
                       <div className="content">
-                        <h3>are your sure to delete?</h3>
+                      <h2> ?האם אתה בטוח שתרצה למחוק את הסדנה</h2>
                         <br />
 
                         <div className="cancel-confirm-btns">
                           <button
                             className="cancel"
                             onClick={() => {
-                              console.log("modal closed ");
                               close();
                             }}
                           >
-                            cancel
+                            ביטול
                           </button>
                           <button
                             onClick={() => {
                               let dataToupdate = doc(db, "courses", course.id);
                               deleteDoc(dataToupdate)
                                 .then((res) => {
-                                  console.log("deleted", res);
                                   setTrigger(true);
+                                  close();
                                 })
                                 .catch((err) => {
                                   console.log("ERROR", err);
@@ -118,7 +118,7 @@ function LecturesSection() {
                             }}
                             className="confirm"
                           >
-                            confirm
+                            אישור
                           </button>
                         </div>
                       </div>

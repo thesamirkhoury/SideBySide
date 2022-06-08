@@ -82,9 +82,10 @@ function NewUpdate() {
 
         {newUpdate ? (
           <span style={{marginRight:'8px'}}>
-            Update added successfully!
+            עדכון חדש  התפרסם בהצלחה
+            <br/>
             <Link to="/admindashboard/updates">
-              <b style={{marginLeft:'8px'}}>Go to updates section</b>
+              <b><u style={{marginLeft:'8px'}}>חזור לדף העדכונים</u></b>
             </Link>
           </span>
         ) : (

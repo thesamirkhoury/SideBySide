@@ -130,7 +130,7 @@ function AdminSidebar({ setAdminLogged }) {
           className={({ isActive }) => (isActive ? setSettingsfilled(true): setSettingsfilled(false))}
         >
           <div className="single-item">
-            <p style={{fontWeight:`${settingsfilled?'bold' : ''}`}}>הטבות</p>
+            <p style={{fontWeight:`${settingsfilled?'bold' : ''}`}}>הגדרות</p>
             <img src={settingsfilled? settingfilled1: setting} alt="icon" height="43" width="32" />
           </div>
         </NavLink>
