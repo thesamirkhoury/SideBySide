@@ -56,7 +56,7 @@ function Navbar() {
         {userLogged || adminLogged ? (
           <div className="profile">
             <div className="desc">
-              <p>Hello</p>
+              <p>שלום</p>
 
               <h4>
                 <span>{loggedUserDetails?.firstName}</span>

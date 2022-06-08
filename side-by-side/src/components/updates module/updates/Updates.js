@@ -23,13 +23,11 @@ function Updates() {
 
     const querySnapshot = await getDocs(q);
     const data = querySnapshot.docs.map((doc) => ({
-      // doc.data() is never undefined for query doc snapshots
       ...doc.data(),
       id: doc.id,
     }));
     setUpdates(data);
   };
-  // console.log("tedslfklsdkf: ", updates);
 
   const [searchWord, setSearchWord] = useState("");
 
@@ -56,8 +54,6 @@ function Updates() {
     <div className="update-container">
       <div className="upper-portion">
         <div className="info">
-          {/* <button id="btn-2">הצג הכל</button> */}
-          {/* <div id="str-top">עדכונים אחרונים</div> */}
         </div>
         <div className="input-parent">
           <input

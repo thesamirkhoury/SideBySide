@@ -46,9 +46,9 @@ function NewLecture() {
     <div className="newLectur-component">
       <form onSubmit={handleSubmit}>
         <div className="content-newLect">
-          <h1>הוספת סדנא חדשה</h1>
+          <h1>הוספת סדנה חדשה</h1>
 
-          <p>שם הסדנא</p>
+          <p>שם הסדנה</p>
           <input
             type="text"
             className="input-newLectur"
@@ -100,9 +100,11 @@ function NewLecture() {
           </div>
           {newLec ? (
             <span>
-              New lecture added successfully!
+            סדנה חדשה  התפרסמה בהצלחה
+            <br/>
+
               <NavLink to="/admindashboard/lecturessection">
-                <b style={{ marginLeft: "8px" }}>go to lectures section</b>
+              <b><u style={{marginLeft:'8px'}}>חזור לדף הסדנאות</u></b>
               </NavLink>
             </span>
           ) : (

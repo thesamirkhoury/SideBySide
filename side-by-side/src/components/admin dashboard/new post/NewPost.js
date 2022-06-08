@@ -128,9 +128,10 @@ function NewPost() {
         </div>
         {newPost && !disabl ? (
           <span>
-            Post added successfully.
+            עדכון חדש  התפרסם בהצלחה
+            <br/>
             <Link to="/admindashboard/blogssection">
-              <b style={{ marginLeft: "8px" }}>go to blogs section</b>
+            <b><u style={{marginLeft:'8px'}}>חזור לדף הפוסטים</u></b>
             </Link>
           </span>
         ) : (

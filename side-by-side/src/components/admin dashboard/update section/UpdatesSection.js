@@ -67,9 +67,11 @@ function UpdatesSection() {
                         <button className="close" onClick={close}>
                           &times;
                         </button>
+                        <h1 style={{textAlign: "center"}}>אישור מחיקה</h1>
+
                         <div className="header"></div>
                         <div className="content">
-                          <h3>are your sure to delete?</h3>
+                          <h2> ?האם אתה בטוח שתרצה למחוק את העדכן</h2>
                           <br />
                           {trigger}
 
@@ -81,7 +83,7 @@ function UpdatesSection() {
                                 close();
                               }}
                             >
-                              cancel
+                              ביטול
                             </button>
                             <button
                               onClick={() => {
@@ -101,7 +103,7 @@ function UpdatesSection() {
                               }}
                               className="confirm"
                             >
-                              confirm
+                              אישור
                             </button>
                           </div>
                         </div>

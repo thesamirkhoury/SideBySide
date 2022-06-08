@@ -8,20 +8,16 @@ function PasswordReset() {
   const { forgotPassword, setResetPass, resetPass } = useUserContext();
 
   const [email, setEmail] = React.useState("");
-  // const [notify, setNotify] = useState(false);
 
   const handleSubmit = (e) => {
     console.log(email);
     e.preventDefault();
     forgotPassword(email)
       .then(() => {
-        // setNotify(true);
-        // setResetPass("password reset link has been sent to your email!");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // setResetPass( "Sorry. Wrong email!");
       });
   };
 
@@ -40,7 +36,6 @@ function PasswordReset() {
         </div>
 
         <button
-          // onClick={ handleSubmit}
           type="submit"
           className="reset-btn"
         >

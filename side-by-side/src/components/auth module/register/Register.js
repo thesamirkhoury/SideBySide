@@ -40,7 +40,7 @@ function Register() {
 
 
   const[cCity, setCcity] = useState('ירושלים והסביבה')
-  const[cMarried, setCmarried] = useState('רווק')
+  const[cMarried, setCmarried] = useState('רווק.ה')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -92,12 +92,11 @@ function Register() {
     });
   }, [setImageUpload, imageUpload, loader, disabl]);
 
-  // console.log("current image url: ", imageUrl);
   return (
     <form onSubmit={handleSubmit}>
       <div className="register-container">
         <h1 className="title-txtR">
-          רוצים להצטרף לכל הטוב הזה? <br></br>מלאו את הפרטים וניצור אתכם קשר
+        ?רוצים להצטרף לכל הטוב הזה <br></br>מלאו את הפרטים וניצור אתכם קשר
           בהקדם
         </h1>
         <div className="dataInput">
@@ -205,8 +204,11 @@ function Register() {
                 id="maritalStatus"
                 required
               >
-                <option value="רווק">רווק</option>
-                <option value="נשוי">נשוי</option>
+                <option value="רווק.ה">רווק.ה</option>
+                <option value="נשואים">נשואים</option>
+                <option value="גרוש.ה">גרוש.ה</option>
+                <option value="אחר">אחר</option>
+
               </select>
 
               <label for="maritalStatus">:מצב משפחתי</label>
@@ -251,20 +253,19 @@ function Register() {
 
         <div className="btnsR">
           <button
-            // type="submit"
-            // onClick={(e)=>handleSubmit(e)}
             className={`${!disabl ? "btn-1R" : "disableBtn"}`}
           >
-            כניסה לאזור האישי
+            שליחה
           </button>
         </div>
 
         {regConfirm ? (
           <p>
-            Registered successfully!{" "}
-            <b>
-              <a href="/">go to home</a>
-            </b>
+            בקשתך להצטרפות לחממה התקבלה
+            <br/>
+            ניצור עימך קשר בהקדם
+            <br/>
+            תודה
           </p>
         ) : null}
       </div>
