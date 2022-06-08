@@ -34,7 +34,6 @@ function NewAdmin() {
   });
 
   const onChange2 = (e) => {
-    // e.defaultPrevent();
     setAdmins({ ...admins, [e.target.name]: e.target.value });
   };
 
@@ -202,9 +201,10 @@ function NewAdmin() {
           </div>
           {newAdmin && !disabl ? (
             <p>
-              New admin added successfully!
+              מנהל חדש התווסף בהצלחה
+            <br/>
               <NavLink to="/admindashboard/adminssection">
-                <b>go to admin section</b>
+              <b><u style={{marginLeft:'8px'}}>חזור לדף העדכונים</u></b>
               </NavLink>
             </p>
           ) : null}

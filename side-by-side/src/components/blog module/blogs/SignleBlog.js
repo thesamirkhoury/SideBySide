@@ -31,7 +31,7 @@ function SingleBlog({blogTopic,blogDescription,blogTime, blogPhoto}) {
       to="/blogs/expandedblog">
         <button id="btn-1B">
           {" "}
-          קראה עוד <CgArrowsExpandLeft style={{ marginLeft: "6px" }} />
+           להמשך קריאה <CgArrowsExpandLeft style={{ marginLeft: "6px" }} />
         </button>
       </Link>
     </div>

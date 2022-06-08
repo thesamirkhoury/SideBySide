@@ -15,7 +15,6 @@ function NewCoupon() {
   });
 
   const onChange2 = (e) => {
-    // e.defaultPrevent();
     setCoupon({ ...coupon, [e.target.name]: e.target.value });
   };
 
@@ -110,9 +109,10 @@ function NewCoupon() {
 
         {newCoupon ? (
           <span>
-            Coupon added successfully
+            הטבה חדשה  התפרסמה בהצלחה
+            <br/>
             <NavLink to="/admindashboard/couponsection">
-              <b style={{ marginLeft: "8px" }}>go to couopon section</b>
+            <b><u style={{marginLeft:'8px'}}>חזור לדף ההטבות</u></b>
             </NavLink>
           </span>
         ) : (

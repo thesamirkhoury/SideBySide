@@ -40,7 +40,6 @@ function Login() {
   useEffect(() => {}, [signInUser, link, error, isAdminLoggedIn]);
 
   return (
-    // <form>
     <div className="Login-container">
       <h1 className="title-txt">התחבר לאזור האישי</h1>
 
@@ -69,12 +68,9 @@ function Login() {
         </div>
       </div>
       <div className="btns">
-        {/* <Link to={`${(!userLogged)  ? "/login" : "/userdashbaord/lectures"}`}> */}
         <button onClick={handleLogin} className="btn-1">
           כניסה לאזור האישי
         </button>
-        {/* </Link> */}
-
         <NavLink to="/resetpassword">
           <button className="btn-2">שכחת את הסיסמה</button>
         </NavLink>
@@ -82,13 +78,12 @@ function Login() {
 
       {error ? (
         <p style={{ width: "30vw", padding: "10px" }}>
-          Credentials incorrect. Please try again!
+            .אחד או יותר מהפרטים המזהים שהקלדת שגוי
         </p>
       ) : (
         ""
       )}
     </div>
-    // </form>
   );
 }
 export default Login;

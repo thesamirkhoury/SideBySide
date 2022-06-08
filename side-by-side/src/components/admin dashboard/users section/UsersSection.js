@@ -30,7 +30,6 @@ function UsersSection() {
       id: doc.id,
     }));
     setDetails(data);
-    // console.log("All users", data);
   };
 
   useEffect(() => {
@@ -121,9 +120,12 @@ function UsersSection() {
                           <button className="close" onClick={close}>
                             &times;
                           </button>
+                      <h1 style={{textAlign: "center"}}>אישור חסימת משתמש</h1>
+
                           <div className="header"></div>
                           <div className="content">
-                            <h3>are your sure to delete?</h3>
+                      <h2> ?האם אתה בטוח שתרצה לחסום את המשתמש</h2>
+
                             <br />
 
                             <div className="cancel-confirm-btns">
@@ -134,7 +136,7 @@ function UsersSection() {
                                   close();
                                 }}
                               >
-                                cancel
+                              ביטול
                               </button>
                               <button
                                 onClick={() => {
@@ -147,7 +149,6 @@ function UsersSection() {
                                     isApproved: true,
                                   })
                                     .then((res) => {
-                                      console.log("Approved", res);
                                       setTrigger(true);
                                       close();
                                     })
@@ -157,7 +158,7 @@ function UsersSection() {
                                 }}
                                 className="confirm"
                               >
-                                confirm
+                            אישור
                               </button>
                             </div>
                           </div>

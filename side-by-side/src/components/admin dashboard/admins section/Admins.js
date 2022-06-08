@@ -64,9 +64,10 @@ function Admins() {
                           <button className="close" onClick={close}>
                             &times;
                           </button>
+                      <h1 style={{textAlign: "center"}}>אישור חסימת מנהל</h1>
                           <div className="header"></div>
                           <div className="content">
-                            <h3>are your sure to delete?</h3>
+                      <h2> ?האם אתה בטוח שתרצה לחסום את המנהל</h2>
                             <br />
 
                             <div className="cancel-confirm-btns">
@@ -77,7 +78,7 @@ function Admins() {
                                   close();
                                 }}
                               >
-                                cancel
+                              ביטול
                               </button>
                               <button
                                 onClick={() => {
@@ -93,7 +94,7 @@ function Admins() {
                                 }}
                                 className="confirm"
                               >
-                                confirm
+                            אישור
                               </button>
                             </div>
                           </div>
