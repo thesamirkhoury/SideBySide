@@ -73,10 +73,10 @@ function Navbar() {
         ) : (
           <div className="div-child">
             <span>
-              <a target="_blank" href="https://www.instagram.com/">
+              <a target="_blank" href="https://instagram.com/hamama_community?r=nametag">
                 <FaInstagramSquare className="social-icons insta" />
               </a>
-              <a target="_blank" href="https://www.facebook.com/">
+              <a target="_blank" href="https://www.facebook.com/groups/3155696671358430">
                 <IoLogoFacebook className="social-icons" />
               </a>
             </span>
