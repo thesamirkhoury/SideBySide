@@ -39,8 +39,8 @@ function Register() {
   const [regConfirm, setRegConfirm] = useState(false);
 
 
-  const[cCity, setCcity] = useState('city1')
-  const[cMarried, setCmarried] = useState('single')
+  const[cCity, setCcity] = useState('ירושלים והסביבה')
+  const[cMarried, setCmarried] = useState('רווק')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -136,9 +136,11 @@ function Register() {
                 required
                 
               >
-                <option  value="city1">city1</option>
-                <option value="city2">city2</option>
-                <option value="city3">city3</option>
+                <option  value="ירושלים והסביבה">ירושלים והסביבה</option>
+                <option value="תל אביב-יפו">תל אביב-יפו</option>
+                <option value="באר שבע רבתי">באר שבע רבתי</option>
+                <option value="חיפה והצפון">חיפה והצפון</option>
+
               </select>
               <label for="city">: עיר מגורים </label>
             </div>
@@ -203,11 +205,11 @@ function Register() {
                 id="maritalStatus"
                 required
               >
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
+                <option value="רווק">רווק</option>
+                <option value="נשוי">נשוי</option>
               </select>
 
-              <label for="maritalStatus">:סיסמה</label>
+              <label for="maritalStatus">:מצב משפחתי</label>
             </div>
           </div>
           <div className="singleLine-inputs">

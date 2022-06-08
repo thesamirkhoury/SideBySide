@@ -72,11 +72,12 @@ function NewCoupon() {
           required
           name="couponCity"
         >
-          <option>Japan </option>
-          <option>Germany </option>
-          <option>China </option>
+         <option>בחר עיר</option>
+        <option  value="ירושלים והסביבה">ירושלים והסביבה</option>
+        <option value="תל אביב-יפו">תל אביב-יפו</option>
+        <option value="באר שבע רבתי">באר שבע רבתי</option>
+         <option value="חיפה והצפון">חיפה והצפון</option>
         </select>
-        {/* <input type="text" className="input-newCoupon" dir='rtl' lang="Hebrew" /> */}
 
         <p>תוקף</p>
         <input
