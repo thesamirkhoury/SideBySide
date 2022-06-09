@@ -39,8 +39,20 @@ function About() {
 
 רוצים לקחת חלק? רוצים להשתתף בתכנית? לתרום את חלקכם?
 מוזמנים ליצור קשר באמצעות הצ׳אט או באחד מהאפשרויות הבאות:
-מייל וואצאפ פייסבוק אינסטגרם
+<div>
+<a href="mailto:name@domain.com" className="links" target={"_blank"}>מייל</a>
+<a>  </a>
 
+<a href="https://wa.me/" className="links" target={"_blank"}>וואצאפ</a>
+<a>  </a>
+<a href="https://www.facebook.com/groups/3155696671358430"className="links" target={"_blank"}>פייסבוק</a>
+<a>  </a>
+<a href="https://instagram.com/hamama_community?r=nametag" className="links" target={"_blank"}>אינסטגרם</a>
+<br/>
+<br/>
+<br/>
+
+</div>
         </p>
       </div>
     </div>
