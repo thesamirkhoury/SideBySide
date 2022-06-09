@@ -2,7 +2,7 @@ import React from "react";
 import { AiFillClockCircle } from "react-icons/ai";
 import { CgArrowsExpandLeft } from "react-icons/cg";
 import { Link, NavLink } from "react-router-dom";
-import blogImage from "../../../assests/BlogImage2.svg";
+import blogImage from "../../../assests/BlogImage.svg";
 import "./SignleBlog.css";
 function SingleBlog({blogTopic,blogDescription,blogTime, blogPhoto}) {
   return (
