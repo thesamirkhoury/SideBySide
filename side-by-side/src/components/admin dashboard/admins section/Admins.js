@@ -87,7 +87,7 @@ function Admins() {
                                       close();
                                     })
                                     .catch((err) => {
-                                      console.log("ERROR", err);
+                                      console.error("ERROR", err);
                                     });
                                 }}
                                 className="confirm"

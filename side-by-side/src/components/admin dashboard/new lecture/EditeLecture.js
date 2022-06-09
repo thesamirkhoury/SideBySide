@@ -80,7 +80,7 @@ function EditeLecture() {
           lang="Hebrew"
           name="courseCost"
           onChange={onChange2}
-          placeholder={location.state.courseName}
+          placeholder={location.state.courseCost}
         />
 
         <div className="btns-newLec">

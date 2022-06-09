@@ -58,7 +58,7 @@ function NewAdmin() {
       setNewAdmin(true);
       registerUser(admins.email, admins.password);
     } catch (e) {
-      console.log("ERROR: ", e);
+      console.error("ERROR: ", e);
     }
   };
 

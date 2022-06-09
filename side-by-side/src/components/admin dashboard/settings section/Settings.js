@@ -49,7 +49,7 @@ function Settings() {
       .then((res) => {
       })
       .catch((err) => {
-        console.log("ERROR", err);
+        console.error("ERROR", err);
       });
   };
 
@@ -156,32 +156,9 @@ function Settings() {
           </div>
           <div className="singleLine-inputs">
             <div className="input-boxR">
-              <input
-                onChange={onChange1}
-                id="children"
-                name="numberOfChildren"
-                dir="rtl"
-                type="number"
-                placeholder={userdetails.numberOfChildren}
-              />
-              <label for="children">:מספר ילדים</label>
             </div>
 
             <div className="input-boxR">
-              <select
-                onChange={onChange1}
-                dir="rtl"
-                name="maritalStatus"
-                id="maritalStatus"
-                placeholder={userdetails.maritalStatus}
-              >
-              <option value="רווק.ה">רווק.ה</option>
-              <option value="נשואים">נשואים</option>
-              <option value="גרוש.ה">גרוש.ה</option>
-              <option value="אחר">אחר</option>
-              </select>
-
-              <label for="maritalStatus">:מצב משפחתי</label>
             </div>
           </div>
 
@@ -208,7 +185,6 @@ function Settings() {
             </div>
 
             <button
-              // onClick={ handleSubmit}
               type="submit"
               className="resetPassButton"
             >

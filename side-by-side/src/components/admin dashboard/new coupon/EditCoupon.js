@@ -30,7 +30,7 @@ function EditCoupon() {
         couponValidity: coupon.couponValidity,
       });
     } catch (e) {
-      console.log("ERROR: ", e);
+      console.error("ERROR: ", e);
     }
   };
 
