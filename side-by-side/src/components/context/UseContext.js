@@ -45,9 +45,6 @@ export const UserContextProvider = ({ children }) => {
   const registerUser = (email, password, name) => {
     setLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
-      .then(async () => {
-        console.log("After registration", auth);
-      })
       .then((res) => {})
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
@@ -72,7 +69,7 @@ export const UserContextProvider = ({ children }) => {
 
           for (var i = 0; i <= data?.length; i++) {
             if (data[i].isAdmin && auth.currentUser.email == data[i].email) {
-              // console.log("ADMIN DATA", data[i]);
+
               setAdminLogged(true);
               setIsAdminLoggedIn(true);
               setUserLogged(false);
@@ -91,17 +88,12 @@ export const UserContextProvider = ({ children }) => {
 
           data?.map((admin) => {
             if (admin.isAdmin && auth.currentUser.email == admin.email) {
-              console.log("ADMIN DATA", admin);
-
               setAdminLogged(true);
             } else if (!admin.isAdmin && auth.currentUser.email == admin) {
               setAdminLogged(true);
             }
           });
         };
-
-        console.log("Logged user details: ", loggedUserDetails);
-
         localStorage.setItem("currentUser", JSON.stringify(res.user));
 
         userData();
@@ -120,15 +112,12 @@ export const UserContextProvider = ({ children }) => {
   const forgotPassword = (email) => {
     return sendPasswordResetEmail(auth, email)
       .then(() => {
-        // console.log("Im hereee in reset pass: ");
         setResetPass("Password reset link has been sent to your email");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setResetPass("email is not found in the table.");
-
-        // console.log("errro in reseting pass...");
       });
   };
 

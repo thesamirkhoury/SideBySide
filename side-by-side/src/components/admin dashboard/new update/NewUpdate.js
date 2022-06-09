@@ -12,7 +12,6 @@ function NewUpdate() {
   });
 
   const onChange2 = (e) => {
-    // e.defaultPrevent();
     setUpdate({ ...update, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
@@ -23,14 +22,11 @@ function NewUpdate() {
         updateDescription: update.updateDescription,
         updateTime: Date.now(),
       });
-      console.log("Document written with ID: ", docRef.id);
       setNewUpdate(true);
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("ERROR: ", e);
     }
   };
-
-  console.log(update);
   function timeNow() {
     var today = new Date();
     var date =
@@ -44,8 +40,6 @@ function NewUpdate() {
     var dateTime = date + " " + time;
   }
   const [newUpdate, setNewUpdate] = React.useState(false);
-
-  console.log(timeNow());
   return (
     <form onSubmit={handleSubmit}>
       <div className="newUpdate-component">

@@ -53,7 +53,6 @@ function Sidebar() {
             </p>
             <img
               src={coupImgFilled ? CouponFilled : Coupon}
-              // className={imgColor}
               alt="icon"
               height="43"
               width="32"
@@ -71,7 +70,6 @@ function Sidebar() {
             <img
               src={tickmgFilled ? TicketFilled : Ticket}
               style={{ color: "red" }}
-              // className={imgColor}
               alt="icon"
               height="43"
               width="32"

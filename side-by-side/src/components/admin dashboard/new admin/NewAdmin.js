@@ -55,12 +55,10 @@ function NewAdmin() {
         confirmPassword: admins.confirmPassword,
         photoURL: { imageUrl },
       });
-      console.log("new admin added with ID: ", docRef.id);
       setNewAdmin(true);
       registerUser(admins.email, admins.password);
-      console.log();
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.log("ERROR: ", e);
     }
   };
 
@@ -204,7 +202,7 @@ function NewAdmin() {
               מנהל חדש התווסף בהצלחה
             <br/>
               <NavLink to="/admindashboard/adminssection">
-              <b><u style={{marginLeft:'8px'}}>חזור לדף העדכונים</u></b>
+              <b><u style={{marginLeft:'8px'}}>חזור לדף ניהול המנהלים</u></b>
               </NavLink>
             </p>
           ) : null}

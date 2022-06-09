@@ -70,7 +70,6 @@ function UsersSection() {
                           isApproved: true,
                         })
                           .then((res) => {
-                            console.log("UPdate", res);
                             setTrigger(true);
                           })
                           .catch((err) => {
@@ -95,7 +94,7 @@ function UsersSection() {
         </table>
       </div>
 
-      <h1>ניהול משתמשים חדשים</h1>
+      <h1>ניהול משתמשים קיימים</h1>
       <div className="olduser-table">
         <table border="1" rules="rows">
           <tr>
@@ -132,7 +131,6 @@ function UsersSection() {
                               <button
                                 className="cancel"
                                 onClick={() => {
-                                  console.log("modal closed ");
                                   close();
                                 }}
                               >

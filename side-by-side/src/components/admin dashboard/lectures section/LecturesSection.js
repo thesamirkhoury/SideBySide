@@ -29,7 +29,6 @@ function LecturesSection() {
       id: doc.id,
     }));
     setCourses(data);
-    console.log("All courses", data);
   };
 
   useEffect(() => {

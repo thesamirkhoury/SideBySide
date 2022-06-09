@@ -3,16 +3,10 @@
     width: 100vw;
     display: flex;
     flex-direction: column; 
-
-
-  
-
 }
 
 .upper-portion{
     width: 80%;
-  
-   
     padding: 40px;
    margin-left: 180px;
    margin-bottom: 30px;
@@ -61,8 +55,6 @@
     display: flex;
     margin:0px 40px;
     flex-wrap: wrap;
-
-    /* grid-template-columns: auto auto auto; */
     justify-content: end;
     align-items: end;
     padding: 20px;

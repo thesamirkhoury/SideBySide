@@ -23,7 +23,6 @@ function NewPost() {
   });
 
   const onChange2 = (e) => {
-    // e.defaultPrevent();
     setBlog({ ...blog, [e.target.name]: e.target.value });
     setTrig(false);
   };
@@ -39,11 +38,9 @@ function NewPost() {
         blogPhoto: { imageUrl },
         blogTime: { time },
       });
-
-      console.log("blog written with ID: ", docRef.id);
       setNewPost(true);
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("ERROR: ", e);
     }
   };
 
@@ -74,15 +71,12 @@ function NewPost() {
       });
     });
   }, [setImageUpload, imageUpload, disabl]);
-  console.log("image url: ", imageUrl);
 
   const [newPost, setNewPost] = useState(false);
   return (
     <form onSubmit={handleSubmit}>
       <div className="newpost-component">
         <h1>הוספת פוסט חדש</h1>
-        {/* {setTrig(true)} */}
-
         <p>כותרת</p>
         <input
           type="text"

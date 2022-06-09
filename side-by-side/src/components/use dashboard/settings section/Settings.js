@@ -52,7 +52,6 @@ function Settings() {
       password: userdetails.password,
     })
       .then((res) => {
-        console.log("user details updated..", res);
       })
       .catch((err) => {
         console.log("ERROR", err);
@@ -64,7 +63,6 @@ function Settings() {
 
   
   const handleSubmit1 = (e) => {
-    console.log(email);
     e.preventDefault();
     forgotPassword(email)
       .then(() => {
@@ -221,7 +219,6 @@ function Settings() {
 
 
             <button
-              // onClick={ handleSubmit}
               type="submit"
               className="resetPassButton"
             >

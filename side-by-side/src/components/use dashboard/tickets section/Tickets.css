@@ -5,6 +5,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 .searchBox {
   margin: 20px;
   margin-top: 50px;
@@ -15,6 +16,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .searchBox > input {
   width: 98%;
   height: 40px;
@@ -23,6 +25,7 @@
   border-radius: 10px;
   border: none;
 }
+
 .searchBox > input::placeholder {
   font-family: "Assistant";
   font-style: normal;
@@ -31,6 +34,7 @@
   line-height: 37px;
   color: #595a5b;
 }
+
 .searchBox > img {
   position: absolute;
   right: 20px;
@@ -40,9 +44,6 @@
   font-weight: 400;
   font-size: 28px;
   line-height: 33px;
-
-  /* Tertiary - Grey */
-
   color: #595a5b;
 }
 
@@ -51,6 +52,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .title-button > h1 {
   font-family: "Assistant";
   font-style: normal;
@@ -60,6 +62,7 @@
   text-align: right;
   color: #000000;
 }
+
 .new-ticket-btn {
   width: 110px;
   height: 48px;
@@ -71,6 +74,7 @@
   justify-content: center;
   cursor: pointer;
 }
+
 .new-ticket-btn > button {
   background-color: #0aabb8;
   border: none;
@@ -82,10 +86,8 @@
 .singletickets-section{
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    
+    justify-content: flex-end; 
 }
-
 
 .newticket-card {
   width: 300px;
@@ -107,10 +109,7 @@
   margin-bottom: -30px;
   margin-top: -20px;
 }
-.status {
-}
-/* background: #F2DADA;
-border-radius: 4px; */
+
 .status > span {
   background: #daf2ec;
   border-radius: 4px;
@@ -146,6 +145,7 @@ border-radius: 4px; */
   margin-bottom: 20px;
   cursor: pointer;
 }
+
 .expand-ticket > img {
   margin: 12px;
   font-family: "SF Pro Display";
@@ -154,7 +154,6 @@ border-radius: 4px; */
   font-size: 18px;
   line-height: 50px;
 }
-
 
 .expandModel{
   height:  90vh !important;
@@ -165,17 +164,16 @@ border-radius: 4px; */
   flex-direction: column;
   position: relative;
 }
+
 .closeEx{
   position: absolute !important;
   bottom: 50px;
   right: 40%;
-
-
 }
+
 .hdr{
   padding: 20px 30px !important;
   background-color: red;
-
 }
 
 .expandedticket-component {
@@ -184,9 +182,11 @@ border-radius: 4px; */
   background-color: white;
   padding: 20px 30px;
 }
+
 .expand-header {
   background-color: white;
 }
+
 .single-line {
   background-color: white;
   display: flex;
@@ -196,9 +196,11 @@ border-radius: 4px; */
   height: 35px;
   padding: 5px 20px;
 }
+
 .single-line > h2 {
   margin-left: 20px;
 }
+
 .single-line > p {
   font-family: "Assistant";
   font-style: normal;
@@ -210,6 +212,7 @@ border-radius: 4px; */
   text-align: center;
   color: #000000;
 }
+
 .status-exp {
   width: 63px;
   height: 24px;
@@ -228,17 +231,19 @@ border-radius: 4px; */
   align-items: center;
   margin-right: 40px;
 }
+
 .status-exp2{
   padding: 5px 9px;
   background-color: #f2dada;
   border-radius: 4px;
   height: 25px;
   margin-right: 40px;
-  
 }
+
 .expandTime {
   margin-top: 5px !important;
 }
+
 .expan {
   margin-right: 50px !important;
 }
@@ -248,6 +253,7 @@ border-radius: 4px; */
   flex-direction: column;
   padding: 10px 20px;
 }
+
 .sng-desc {
   display: flex;
   flex-direction: column;
@@ -255,9 +261,11 @@ border-radius: 4px; */
   text-align: right;
   margin-bottom: -20px;
 }
+
 .sng-desc > h2 {
   margin-bottom: -5px;
 }
+
 .closeExp-btn {
   font-family: "Assistant";
   font-style: normal;

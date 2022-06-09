@@ -79,7 +79,6 @@ function UpdatesSection() {
                             <button
                               className="cancel"
                               onClick={() => {
-                                console.log("modal closed ");
                                 close();
                               }}
                             >

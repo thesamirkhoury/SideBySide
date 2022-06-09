@@ -30,11 +30,7 @@ const {ticketTrigger, setTicketTrigger,tickets,setTickets} = useUserContext();
 
   const regUsrz = [{}];
 
-  
-  // setTickets(()=>[regUsrz])
-
   useEffect(() => {
-    // console.log("Triggered")
     const Alltickets = async () => {
  
       const q = query(collection(db, "tickets"));
@@ -43,29 +39,16 @@ const {ticketTrigger, setTicketTrigger,tickets,setTickets} = useUserContext();
         ...doc.data(),
         id: doc.id,
       }));
-      // console.log("All tickets", data);
+
      const arr = [];
       data.map((dat) => {
         if (dat.userCreated.loggedUserEmail == loggedUserEmail1 && dat.userCreated.loggedUserEmail != null) {
-          // console.log("data to be added",dat)
-        
         arr.push(dat);
-          //  setTicketData([dat])
-  
-          // regUsrz.push(dat);
         }
       }
       
       );
-    
-      console.log("ARR",arr)
       setTickets([...arr])
-    
-
-
-  
-      
-      // setTickets(regUsrz);
      
     };
     Alltickets();
@@ -96,8 +79,6 @@ const {ticketTrigger, setTicketTrigger,tickets,setTickets} = useUserContext();
       </div>
       <div className="singletickets-section">
         {tickets?.map((ticket) => {
-          // console.log("TICKETS",tickets)
-
           return (
             <SingleTicket
               ticketStatus={ticket.ticketStatus}

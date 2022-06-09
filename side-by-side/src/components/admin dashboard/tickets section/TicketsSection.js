@@ -41,7 +41,6 @@ function TicketsSection() {
     );
   }
 
-  // console.log("tickdwert: ", tickets)
 
   return (
     <div className="ticket-sectin">

@@ -13,7 +13,7 @@ export default function NewTicket() {
   const { ticketTrigger, setTicketTrigger } = useUserContext();
 
   const onChange2 = (e) => {
-    // e.defaultPrevent();
+
     setTicket({ ...tickets, [e.target.name]: e.target.value });
   };
 
@@ -32,7 +32,6 @@ export default function NewTicket() {
         userFirstName: loggedUserDetails.firstName,
         usreLastName: loggedUserDetails.lastName,
       });
-      console.log("New ticket has been generated... ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -52,7 +51,6 @@ export default function NewTicket() {
     const cUser = JSON.parse(localStorage.getItem("currentUser"));
     for (var i = 0; i <= data?.length; i++) {
       if (data[i]?.email == cUser?.email) {
-        console.log("Logged user data: ATA", data[i]);
         setLoggedUserDetails(data[i]);
         break;
       }
@@ -62,8 +60,6 @@ export default function NewTicket() {
   React.useEffect(() => {
     currentUserDetails();
   }, []);
-
-  console.log("dddd: ", loggedUserDetails);
 
   return (
     <div className="newTicket-component">

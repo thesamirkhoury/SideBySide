@@ -19,7 +19,6 @@ function EditeLecture() {
   });
 
   const onChange2 = (e) => {
-    // e.defaultPrevent();
     setCourses({ ...courses, [e.target.name]: e.target.value });
   };
 
@@ -31,9 +30,8 @@ function EditeLecture() {
       courseCost: courses.courseCost,
     })
       .then((res) => {
-        console.log("updated successfully..!");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("ERROR: ",err));
   };
 
   return (

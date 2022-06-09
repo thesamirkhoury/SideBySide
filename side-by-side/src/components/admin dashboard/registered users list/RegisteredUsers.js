@@ -34,8 +34,6 @@ function RegisteredUsers() {
     AllCourses();
   }, []);
 
-  console.log("Location", location.state);
-
   function unixTime(unixtime) {
     var u = new Date(unixtime * 1000);
     return (
@@ -68,7 +66,6 @@ function RegisteredUsers() {
                 <td>{usr.firstName}</td>
               </tr>
             );
-            // console.log(usr);
           })}
         </table>
         <NavLink to="/admindashboard/lecturessection">

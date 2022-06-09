@@ -10,7 +10,6 @@ function PasswordReset() {
   const [email, setEmail] = React.useState("");
 
   const handleSubmit = (e) => {
-    console.log(email);
     e.preventDefault();
     forgotPassword(email)
       .then(() => {

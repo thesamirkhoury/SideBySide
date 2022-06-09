@@ -7,7 +7,6 @@
   height: 150vh;
   text-align: right;
   background-color: rgba(203, 232, 233, 0.897);
-  /* background-color: red; */
 }
 .disableBtn {
   cursor: wait;
