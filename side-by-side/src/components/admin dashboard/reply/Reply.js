@@ -10,9 +10,6 @@ import {location } from 'react-router-dom'
 function Reply() {
 
   const location = useLocation();
-  console.log("stat: ", location)
-
-  
 
   function unixTime(unixtime) {
     var u = new Date(unixtime * 1000);
@@ -42,7 +39,6 @@ function Reply() {
       ticketStatus:'closed'
     })
       .then((res) => {
-        console.log("UPdate", res);
       })
       .catch((err) => {
         console.log("ERROR", err);

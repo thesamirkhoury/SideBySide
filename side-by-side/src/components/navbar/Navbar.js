@@ -33,7 +33,6 @@ function Navbar() {
     const cUser = JSON.parse(localStorage.getItem("currentUser"));
     for (var i = 0; i <= data?.length; i++) {
       if (data[i]?.email == cUser?.email) {
-        console.log("ADmin data at navbar", data[i]);
         setLoggedUserDetails(data[i]);
 
         break;
@@ -47,8 +46,6 @@ function Navbar() {
 
   const phot = loggedUserDetails?.photoURL;
   const imgeRL = phot?.imageUrl;
-
-  console.log("final: ", imgeRL);
 
   return (
     <nav style={{ width: "100vw", background: "white", padding: "10px 0px" }}>

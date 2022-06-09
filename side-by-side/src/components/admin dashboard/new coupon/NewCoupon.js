@@ -30,9 +30,8 @@ function NewCoupon() {
         couponValidity:  Date.now(),
       });
       setNewCoupon(true);
-      console.log("newe coupon added written with ID: ", docRef.id);
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.log("ERROR: ", e);
     }
   };
 

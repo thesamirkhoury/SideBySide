@@ -48,7 +48,6 @@ function SingleCoupon({
                 viewCoupon:[...couponID, couponID],
               })
                 .then((res) => {
-                  console.log("Approved", res);
                 })
                 .catch((err) => {
                   console.log("ERROR", err);
@@ -73,7 +72,6 @@ function SingleCoupon({
               </div>
               <button
                 onClick={() => {
-                  console.log("modal closed ");
                   close();
                 }}
                 className="coupon-btn"

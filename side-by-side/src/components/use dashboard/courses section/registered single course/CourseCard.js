@@ -45,7 +45,6 @@ function CourseCard() {
                 <button
                   className="cancel"
                   onClick={() => {
-                    console.log("modal closed ");
                     close();
                   }}
                 >

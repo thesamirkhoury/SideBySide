@@ -8,18 +8,17 @@ import { db } from "../../../firebase/Firebase.config";
 import { useUserContext } from "../../context/UseContext";
 import { async } from "@firebase/util";
 import { Nav } from "react-bootstrap";
-// import { useNavigate } from "react-router-dom";
+
 
 function Login() {
   const { signInUser, userLogged, error, isAdminLoggedIn } = useUserContext();
   const [details, setDetails] = useState([]);
-  // const navigate = useNavigate();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const onChange1 = (e) => {
-    // e.defaultPrevent();
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 

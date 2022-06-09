@@ -18,11 +18,8 @@ function EditCoupon() {
   });
 
   const onChange2 = (e) => {
-    // e.defaultPrevent();
     setCoupon({ ...coupon, [e.target.name]: e.target.value });
   };
-
-  // console.log("location stat: ", location.state)
   const handleSubmit = async () => {
     try {
       const docRef = updateDoc(doc(db, "coupons", location.state.id), {
@@ -32,9 +29,8 @@ function EditCoupon() {
         couponCity: coupon.couponCity,
         couponValidity: coupon.couponValidity,
       });
-      console.log("= coupon updated successfully ", docRef.id);
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.log("ERROR: ", e);
     }
   };
 

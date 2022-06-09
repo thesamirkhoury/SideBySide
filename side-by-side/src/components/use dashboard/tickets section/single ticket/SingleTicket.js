@@ -13,11 +13,6 @@ function SingleTicket({
   ticketReferral,
   ticketAnswer,
 }) {
-
-  console.log("ticetnumer: ",ticketNumber)
-
-
-
   return (
     <div className="newticket-card">
       <div className="singleticket-detail">
@@ -80,8 +75,6 @@ function SingleTicket({
                   </div>
                 </div>
               </div>
-
-              {/* <hr className="horizontal-rowCan expan" /> */}
             </div>
 
             <div className="content">
@@ -97,7 +90,6 @@ function SingleTicket({
               </div>
               <button
                 onClick={() => {
-                  console.log("modal closed ");
                   close();
                 }}
                 className="closeExp-btn closeEx"

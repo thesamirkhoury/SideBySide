@@ -26,7 +26,6 @@ function Admins() {
       id: doc.id,
     }));
     setAdmins(data);
-    console.log("All admins", data);
   };
 
   useEffect(() => {
@@ -74,7 +73,6 @@ function Admins() {
                               <button
                                 className="cancel"
                                 onClick={() => {
-                                  console.log("modal closed ");
                                   close();
                                 }}
                               >
@@ -86,7 +84,7 @@ function Admins() {
                                   deleteDoc(dataToupdate)
                                     .then((res) => {
                                       setTrigger(true);
-                                      console.log("admin deleted...");
+                                      close();
                                     })
                                     .catch((err) => {
                                       console.log("ERROR", err);

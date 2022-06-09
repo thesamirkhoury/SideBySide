@@ -1,7 +1,6 @@
 .newCoupon-component {
     text-align: right;
     padding: 50px;
-    /* background-color: white; */
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;

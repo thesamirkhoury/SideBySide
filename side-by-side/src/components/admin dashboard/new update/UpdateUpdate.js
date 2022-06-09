@@ -30,7 +30,6 @@ function UpdateUpdate() {
       updateDescription: update.updateDescription,
     })
       .then((res) => {
-        console.log("updated..", res);
       })
       .catch((err) => {
         console.log("ERROR", err);

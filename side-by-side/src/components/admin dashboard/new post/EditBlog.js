@@ -26,10 +26,9 @@ function Editblog() {
       blogDescription: blog.blogDescription,
     })
       .then((res) => {
-        console.log("blog updated..", res);
       })
       .catch((err) => {
-        console.log("ERROR", err);
+        console.log("ERROR ", err);
       });
   };
 

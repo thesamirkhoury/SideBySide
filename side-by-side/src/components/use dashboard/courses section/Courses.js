@@ -28,7 +28,6 @@ function Courses() {
     setCourses(data);
   };
 
-  console.log("All coursesddd", courses);
 
   const [users, setUsers] = useState([]);
 
@@ -41,11 +40,11 @@ function Courses() {
     }));
 
     const userdata = data.filter((dat) => dat.email == cUser.email);
-    //  console.log("USERDATA",userdata)
+
 
     setUsers(userdata);
   };
-  // console.log("userssss: ", users)
+
 
   useEffect(() => {
     AllCourses();
@@ -65,14 +64,14 @@ function Courses() {
     );
   }
   const cUser = JSON.parse(localStorage.getItem("currentUser"));
-  // console.log("cUser: ", cUser)
+
 
   return (
     <div className="courses-component">
       <h1>סדנאות פתוחות להרשמה</h1>
       <div className="courses-section">
         {courses.map((singlecourse) => {
-          // console.log("Cousr;;;;;;: ", singlecourse?.registeredUsers);
+
           if (
             singlecourse.registeredUsers?.filter(
               (dat) => dat.email == cUser.email
@@ -100,7 +99,6 @@ function Courses() {
                   <h1>עלות השתתפות </h1>
                   <p>{singlecourse.courseCost} ₪</p>
                 </div>
-                {/* <NavLink to="/userdashboard/lectures/registerlecture"> */}
                 <button
                   onClick={() => {
                     let dataToupdate = doc(db, "courses", singlecourse.id);
@@ -112,8 +110,6 @@ function Courses() {
                       isRegistered: true,
                     })
                       .then((res) => {
-                        console.log("Registered", res);
-
                         setTrigger(true);
                       })
                       .catch((err) => {
@@ -124,7 +120,6 @@ function Courses() {
                 >
                   הרשם
                 </button>
-                {/* </NavLink> */}
               </div>
             );
           }
@@ -183,7 +178,6 @@ function Courses() {
                           <button
                             className="cancel"
                             onClick={() => {
-                              console.log("modal closed ");
                               close();
                             }}
                           >
@@ -200,7 +194,6 @@ function Courses() {
                                 isRegistered: false,
                               })
                                 .then((res) => {
-                                  console.log("UPdate", res);
                                   setTrigger(trigger? false: true);
                                   close();
                                 })

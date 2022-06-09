@@ -35,8 +35,6 @@ function Updates() {
     userData();
   }, [trigger, searchWord]);
 
-  console.log(updates);
-  console.log(searchWord);
 
   function standardTime(unixtime) {
     var u = new Date(unixtime);

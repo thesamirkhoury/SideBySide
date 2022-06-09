@@ -47,7 +47,7 @@ import RegisteredUsers from "./components/admin dashboard/registered users list/
 import EditeLecture from './components/admin dashboard/new lecture/EditeLecture'
 import EditCoupon from "./components/admin dashboard/new coupon/EditCoupon";
 import PasswordReset from "./components/auth module/password reset/PasswordReset";
-// User dashboard components
+
 
 function App() {
   const { userLogged, setUserLogged, adminLogged, setAdminLogged , wrongCreds} =
