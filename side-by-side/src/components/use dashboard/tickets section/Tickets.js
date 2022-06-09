@@ -52,7 +52,6 @@ const {ticketTrigger, setTicketTrigger,tickets,setTickets} = useUserContext();
      
     };
     Alltickets();
-    console.log("Ticket data",tickets)
  
  
   }, [setTickets]);

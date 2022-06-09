@@ -17,7 +17,6 @@ function NewLecture() {
   const [courses, setCourses] = useState([]);
 
   const onChange2 = (e) => {
-    // e.defaultPrevent();
     setCourses({ ...courses, [e.target.name]: e.target.value });
   };
 
@@ -36,7 +35,7 @@ function NewLecture() {
         isRegistered: false,
       });
 
-      console.log("new lecture written with ID: ", docRef.id);
+      console.error("new lecture written with ID: ", docRef.id);
       setNewLect(true);
     } catch (e) {
       console.error("Error adding document: ", e);

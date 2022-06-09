@@ -28,7 +28,7 @@ function Editblog() {
       .then((res) => {
       })
       .catch((err) => {
-        console.log("ERROR ", err);
+        console.error("ERROR ", err);
       });
   };
 

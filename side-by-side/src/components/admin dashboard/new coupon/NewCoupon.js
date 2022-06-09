@@ -31,7 +31,7 @@ function NewCoupon() {
       });
       setNewCoupon(true);
     } catch (e) {
-      console.log("ERROR: ", e);
+      console.error("ERROR: ", e);
     }
   };
 

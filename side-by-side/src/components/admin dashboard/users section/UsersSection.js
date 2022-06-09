@@ -73,7 +73,7 @@ function UsersSection() {
                             setTrigger(true);
                           })
                           .catch((err) => {
-                            console.log("ERROR", err);
+                            console.error("ERROR", err);
                           });
                       }}
                       className="adminButton"
@@ -151,7 +151,7 @@ function UsersSection() {
                                       close();
                                     })
                                     .catch((err) => {
-                                      console.log("ERROR", err);
+                                      console.error("ERROR", err);
                                     });
                                 }}
                                 className="confirm"

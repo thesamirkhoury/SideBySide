@@ -54,7 +54,7 @@ function Settings() {
       .then((res) => {
       })
       .catch((err) => {
-        console.log("ERROR", err);
+        console.error("ERROR", err);
       });
   };
 
