@@ -40,10 +40,10 @@ function About() {
 רוצים לקחת חלק? רוצים להשתתף בתכנית? לתרום את חלקכם?
 מוזמנים ליצור קשר באמצעות הצ׳אט או באחד מהאפשרויות הבאות:
 <div>
-<a href="mailto:name@domain.com" className="links" target={"_blank"}>מייל</a>
+<a href="mailto:gili@katef.org.il" className="links" target={"_blank"}>מייל</a>
 <a>  </a>
 
-<a href="https://wa.me/" className="links" target={"_blank"}>וואצאפ</a>
+<a href="https://wa.me/972548279438" className="links" target={"_blank"}>וואצאפ</a>
 <a>  </a>
 <a href="https://www.facebook.com/groups/3155696671358430"className="links" target={"_blank"}>פייסבוק</a>
 <a>  </a>
