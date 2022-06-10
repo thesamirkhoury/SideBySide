@@ -1,10 +1,8 @@
 .about-page{
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
-    background-color: #E5E5E5 !important;
 }
 .contnt-side{
     text-align: right;
