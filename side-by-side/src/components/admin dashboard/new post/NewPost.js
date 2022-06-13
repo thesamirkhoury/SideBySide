@@ -5,7 +5,6 @@ import { async } from "@firebase/util";
 import { db } from "../../../firebase/Firebase.config";
 import { collection, query, getDocs } from "firebase/firestore";
 import { doc, setDoc, addDoc } from "firebase/firestore";
-//28550341-3d8f-4fae-a6e4-b391d109e4bf
 import {
   ref,
   uploadBytes,
